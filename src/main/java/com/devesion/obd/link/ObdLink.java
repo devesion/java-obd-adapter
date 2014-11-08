@@ -14,8 +14,8 @@ import java.io.OutputStream;
 public class ObdLink {
 	private static final char ELM_PROMPT = '>';
 
-	private InputStream inputStream;
-	private OutputStream outputStream;
+	private final InputStream inputStream;
+	private final OutputStream outputStream;
 
 	public ObdLink(InputStream inputStream, OutputStream outputStream) {
 		this.inputStream = inputStream;

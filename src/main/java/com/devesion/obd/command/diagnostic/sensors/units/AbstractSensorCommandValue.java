@@ -29,9 +29,7 @@ abstract class AbstractSensorCommandValue implements SensorCommandValue {
 	@Override
 	public String toString() {
 		final StringBuilder sb = new StringBuilder("AbstractSensorCommandValue{");
-		sb.append("intValue=").append(getIntValue()).append(", ");
-		sb.append("floatValue=").append(getFloatValue());
-		sb.append('}');
+		sb.append("intValue=").append(getIntValue()).append(", ").append("floatValue=").append(getFloatValue()).append('}');
 		return sb.toString();
 	}
 }
