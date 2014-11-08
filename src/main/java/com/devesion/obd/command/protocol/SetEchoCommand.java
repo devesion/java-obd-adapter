@@ -21,7 +21,7 @@ public class SetEchoCommand extends AbstractProtocolCommand {
 
 	@Override
 	public String getOperands() {
-		int enabledInt = (enabled) ? 1 : 0;
+		int enabledInt = enabled ? 1 : 0;
 		return "E" + enabledInt;
 	}
 }

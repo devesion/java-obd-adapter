@@ -13,7 +13,7 @@ public class SetEchoCommandTest {
 	public void getOperandsShouldReturnProperElmCommand() throws Exception {
 		// given
 		boolean echoStatus = TestSupport.getRandomBoolean();
-		int echoStatusInt = (echoStatus) ? 1 : 0;
+		int echoStatusInt = echoStatus ? 1 : 0;
 		String expectedOperands = "E" + echoStatusInt;
 
 		// when
