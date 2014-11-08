@@ -1,12 +1,11 @@
 package com.devesion.obd.command.protocol;
 
-import junit.framework.TestCase;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-public class SelectProtocolCommandTest extends TestCase {
+public class SelectProtocolCommandTest {
 
 	private SelectProtocolCommand sut;
 

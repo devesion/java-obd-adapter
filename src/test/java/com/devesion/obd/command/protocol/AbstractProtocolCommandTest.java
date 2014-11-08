@@ -1,7 +1,6 @@
 package com.devesion.obd.command.protocol;
 
 import com.devesion.obd.command.ObdCommandVisitor;
-import junit.framework.TestCase;
 import org.mockito.Mock;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,7 +8,7 @@ import org.testng.annotations.Test;
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class AbstractProtocolCommandTest extends TestCase {
+public class AbstractProtocolCommandTest {
 
 	@Mock
 	private ObdCommandVisitor protocolCommandVisitorMock;

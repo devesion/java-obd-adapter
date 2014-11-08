@@ -1,7 +1,6 @@
 package com.devesion.obd.command;
 
 import com.devesion.obd.command.invoker.CommandResult;
-import junit.framework.TestCase;
 import org.mockito.Mock;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,7 +8,7 @@ import org.testng.annotations.Test;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class AbstractCommandTest extends TestCase {
+public class AbstractCommandTest {
 
 	@Mock
 	private CommandResult commandResultMock;

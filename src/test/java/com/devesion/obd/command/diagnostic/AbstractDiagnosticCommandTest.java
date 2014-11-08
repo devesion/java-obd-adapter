@@ -2,7 +2,6 @@ package com.devesion.obd.command.diagnostic;
 
 import com.devesion.obd.command.ObdCommandVisitor;
 import com.devesion.obd.shared.ObdNumberedEnum;
-import junit.framework.TestCase;
 import org.mockito.Mock;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -10,7 +9,7 @@ import org.testng.annotations.Test;
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class AbstractDiagnosticCommandTest extends TestCase {
+public class AbstractDiagnosticCommandTest {
 
 	@Mock
 	private ObdCommandVisitor diagnosticCommandVisitorMock;

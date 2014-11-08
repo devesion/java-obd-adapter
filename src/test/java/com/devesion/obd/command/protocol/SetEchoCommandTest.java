@@ -1,12 +1,11 @@
 package com.devesion.obd.command.protocol;
 
 import com.devesion.obd.TestSupport;
-import junit.framework.TestCase;
 import org.testng.annotations.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-public class SetEchoCommandTest extends TestCase {
+public class SetEchoCommandTest {
 
 	private SetEchoCommand sut;
 
