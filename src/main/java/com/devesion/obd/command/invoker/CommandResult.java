@@ -10,7 +10,7 @@ import java.nio.IntBuffer;
  * Represents OBD command result.
  */
 @ToString
-public class CommandResult {
+public final class CommandResult {
 
 	@Getter(AccessLevel.PACKAGE)
 	private IntBuffer responseBuffer;

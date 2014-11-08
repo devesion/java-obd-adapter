@@ -49,5 +49,8 @@ public class AbstractCommandTest {
 	}
 
 	private static class FakeAbstractCommand extends AbstractCommand {
+		@Override
+		public void accept(ObdCommandVisitor visitor) {
+		}
 	}
 }

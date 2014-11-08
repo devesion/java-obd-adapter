@@ -3,7 +3,7 @@ package com.devesion.obd.shared;
 /**
  * Represents general OBD communication exception.
  */
-public class ObdCommunicationException extends ObdRuntimeException {
+public class ObdCommunicationException extends ObdAbstractRuntimeException {
 
 	public ObdCommunicationException() {
 	}

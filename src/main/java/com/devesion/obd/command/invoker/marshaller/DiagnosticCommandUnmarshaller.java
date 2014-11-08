@@ -43,13 +43,13 @@ class DiagnosticCommandUnmarshaller extends AbstractCommandUnmarshaller {
 	private String omitMagicSequence(DiagnosticCommand command, String responseData) {
 		String magicSequence = ELM_DIAGNOSTIC_ACK_OK + HexTools.toHexString(command.getPid());
 		log.info("magic sequence {}", magicSequence);
-		int magicSequenceLength = magicSequence.length();
 
 		int magicSequenceIndex = responseData.indexOf(magicSequence);
 		if (magicSequenceIndex < 0) {
 			return responseData;
 		}
 
+		int magicSequenceLength = magicSequence.length();
 		return responseData.substring(magicSequenceIndex + magicSequenceLength);
 	}
 

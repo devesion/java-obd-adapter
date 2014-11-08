@@ -24,6 +24,6 @@ public class SimpleValue extends AbstractSensorCommandValue {
 	protected float calculateValue() {
 		int majorByte = getResultByteNumber(0);
 		int minorByte = getResultByteNumber(1);
-		return ((majorByte * multiplier + minorByte) / divisor);
+		return (majorByte * multiplier + minorByte) / divisor;
 	}
 }

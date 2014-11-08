@@ -5,7 +5,7 @@ package com.devesion.obd.command.protocol;
  */
 public class SetEchoCommand extends AbstractProtocolCommand {
 
-	private boolean enabled = false;
+	private boolean enabled;
 
 	public SetEchoCommand(boolean enabled) {
 		this.enabled = enabled;

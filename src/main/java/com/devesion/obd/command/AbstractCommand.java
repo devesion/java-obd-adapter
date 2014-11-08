@@ -19,8 +19,4 @@ public abstract class AbstractCommand implements ObdCommand {
 	public void setResult(CommandResult result) {
 		this.result = result;
 	}
-
-	@Override
-	public void accept(ObdCommandVisitor visitor) {
-	}
 }

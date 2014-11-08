@@ -25,7 +25,7 @@ public class ObdAdapterClient implements SerialPortEventListener {
 	private InputStream is;
 	private OutputStream os;
 
-	public static void main(String[] args) {
+	public static void main(String... args) {
 		ObdAdapterClient client = new ObdAdapterClient();
 		client.run();
 	}
