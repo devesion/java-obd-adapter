@@ -42,9 +42,7 @@ public class ObdLink {
 		char c;
 		while ((c = readChar()) != ELM_PROMPT) {
 			log.debug("read char '{}'", c);
-			if (c != ELM_SPACE) {
-				res.append(c);
-			}
+			res.append(c);
 		}
 
 		log.debug("reading end");

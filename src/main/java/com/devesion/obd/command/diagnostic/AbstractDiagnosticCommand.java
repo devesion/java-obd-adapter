@@ -1,25 +1,16 @@
 package com.devesion.obd.command.diagnostic;
 
 import com.devesion.obd.command.AbstractCommand;
-import com.devesion.obd.shared.ObdNumberedEnum;
+import com.devesion.obd.command.ObdCommandVisitor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 public abstract class AbstractDiagnosticCommand extends AbstractCommand implements DiagnosticCommand {
 
 	@Override
-	public String getMnemonic() {
-		return toHexString(getMode());
-	}
-
-	@Override
-	public String getOperands() {
-		return toHexString(getPid());
-	}
-
-	private String toHexString(ObdNumberedEnum numberedEnum) {
-		return Integer.toHexString(0xFF & numberedEnum.getNumber());
+	public void accept(ObdCommandVisitor visitor) {
+		visitor.visit(this);
 	}
 }

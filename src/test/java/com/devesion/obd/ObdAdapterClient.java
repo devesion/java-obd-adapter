@@ -5,8 +5,8 @@ import com.devesion.obd.command.diagnostic.sensors.EngineRpmCommand;
 import com.devesion.obd.command.diagnostic.sensors.MassAirFlowCommand;
 import com.devesion.obd.command.diagnostic.sensors.ThrottlePositionCommand;
 import com.devesion.obd.command.invoker.CommandInvoker;
-import com.devesion.obd.command.protocol.EchoOffCommand;
 import com.devesion.obd.command.protocol.SelectProtocolCommand;
+import com.devesion.obd.command.protocol.SetEchoCommand;
 import com.devesion.obd.link.ObdLink;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
@@ -71,8 +71,8 @@ public class ObdAdapterClient implements SerialPortEventListener {
 		ObdLink obdLink = new ObdLink(is, os);
 		CommandInvoker commandInvoker = new CommandInvoker(obdLink);
 
-		EchoOffCommand echoOffCommand = new EchoOffCommand();
-		commandInvoker.invoke(echoOffCommand);
+		SetEchoCommand setEchoCommand = SetEchoCommand.on();
+		commandInvoker.invoke(setEchoCommand);
 
 		SelectProtocolCommand selectProtocolCommand = new SelectProtocolCommand();
 		commandInvoker.invoke(selectProtocolCommand);

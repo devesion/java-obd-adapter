@@ -7,9 +7,9 @@ import com.devesion.obd.command.invoker.CommandResult;
  */
 public interface ObdCommand {
 
-	String getMnemonic();
-
-	String getOperands();
+	CommandResult getResult();
 
 	void setResult(CommandResult result);
+
+	void accept(ObdCommandVisitor visitor);
 }

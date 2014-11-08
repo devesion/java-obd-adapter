@@ -1,6 +1,7 @@
 package com.devesion.obd.command.protocol;
 
 import com.devesion.obd.command.AbstractCommand;
+import com.devesion.obd.command.ObdCommandVisitor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -8,13 +9,11 @@ import lombok.ToString;
  * Supertype for every Protocol Command.
  */
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 abstract class AbstractProtocolCommand extends AbstractCommand implements ProtocolCommand {
 
-	private static final String PROTOCOL_COMMAND_MNEMONIC = "AT";
-
 	@Override
-	public String getMnemonic() {
-		return PROTOCOL_COMMAND_MNEMONIC;
+	public void accept(ObdCommandVisitor visitor) {
+		visitor.visit(this);
 	}
 }

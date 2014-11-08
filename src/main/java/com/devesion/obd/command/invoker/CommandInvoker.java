@@ -1,7 +1,12 @@
 package com.devesion.obd.command.invoker;
 
-import com.devesion.obd.link.ObdLink;
 import com.devesion.obd.command.ObdCommand;
+import com.devesion.obd.command.invoker.marshaller.CommandMarshaller;
+import com.devesion.obd.command.invoker.marshaller.CommandUnmarshaller;
+import com.devesion.obd.command.invoker.marshaller.CommandUnmarshallerBridge;
+import com.devesion.obd.command.invoker.marshaller.CommandMarshallerBridge;
+
+import com.devesion.obd.link.ObdLink;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -11,8 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 public class CommandInvoker {
 
 	private ObdLink obdLink;
-	private CommandMarshaller commandMarshaller = new DefaultCommandMarshaller();
-	private CommandUnmarshaller commandUnmarshaller = new DefaultCommandUnmarshaller();
+	private CommandMarshaller commandMarshaller = new CommandMarshallerBridge();
+	private CommandUnmarshaller commandUnmarshaller = new CommandUnmarshallerBridge();
 
 	public CommandInvoker(ObdLink obdLink) {
 		this.obdLink = obdLink;
@@ -28,7 +33,7 @@ public class CommandInvoker {
 		log.debug("data sent, waiting for result");
 
 		String commandResultData = obdLink.readData();
-		CommandResult result = commandUnmarshaller.unmarshal(commandResultData);
+		CommandResult result = commandUnmarshaller.unmarshal(command, commandResultData);
 		log.info("OBD Command result '{}'", result);
 
 		command.setResult(result);
