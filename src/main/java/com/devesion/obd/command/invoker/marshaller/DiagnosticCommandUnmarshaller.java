@@ -14,6 +14,7 @@ class DiagnosticCommandUnmarshaller extends AbstractCommandUnmarshaller {
 
 	private static final String ELM_DIAGNOSTIC_ACK_OK = "41";
 	private static final String ELM_DIAGNOSTIC_RESPONSE_REGEXP = "([0-9A-F]{2})+";
+	private static final int ELM_MAX_COMMAND_RESPONSE_LENGTH = 256;
 
 	@Override
 	public CommandResult unmarshal(ObdCommand command, String responseData) {
@@ -30,7 +31,7 @@ class DiagnosticCommandUnmarshaller extends AbstractCommandUnmarshaller {
 		checkDiagnosticResponse(responseData);
 
 		IntBuffer responseBuffer = readByteBuffer(responseData);
-		return new CommandResult(responseBuffer);
+		return CommandResult.withBuffer(responseBuffer);
 	}
 
 	private void checkDiagnosticResponse(String responseData) {
@@ -53,12 +54,18 @@ class DiagnosticCommandUnmarshaller extends AbstractCommandUnmarshaller {
 	}
 
 	private IntBuffer readByteBuffer(String data) {
-		IntBuffer buffer = IntBuffer.allocate(10);
+		IntBuffer buffer = IntBuffer.allocate(ELM_MAX_COMMAND_RESPONSE_LENGTH);
 		int readByteIndex = 0;
+		int readCharIndex = 0;
 		while (readByteIndex < data.length()) {
 			int readByte = HexTools.fromHexString(data, readByteIndex, readByteIndex + 2);
 			buffer.put(readByte);
 			readByteIndex += 2;
+			readCharIndex += 1;
+
+			if (readCharIndex >= ELM_MAX_COMMAND_RESPONSE_LENGTH) {
+				break;
+			}
 		}
 
 		buffer.flip();

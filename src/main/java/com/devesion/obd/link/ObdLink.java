@@ -13,7 +13,6 @@ import java.io.OutputStream;
 @Slf4j
 public class ObdLink {
 	private static final char ELM_PROMPT = '>';
-	private static final char ELM_SPACE = ' ';
 
 	private InputStream inputStream;
 	private OutputStream outputStream;

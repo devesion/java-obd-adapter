@@ -1,5 +1,7 @@
 package com.devesion.obd.command.invoker;
 
+import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.ToString;
 
 import java.nio.IntBuffer;
@@ -10,14 +12,19 @@ import java.nio.IntBuffer;
 @ToString
 public class CommandResult {
 
+	@Getter(AccessLevel.PACKAGE)
 	private IntBuffer responseBuffer;
 
-	public CommandResult() {
-		this.responseBuffer = IntBuffer.allocate(0);
+	private CommandResult(IntBuffer responseBuffer) {
+		this.responseBuffer = responseBuffer;
 	}
 
-	public CommandResult(IntBuffer responseBuffer) {
-		this.responseBuffer = responseBuffer;
+	public static CommandResult empty() {
+		return withBuffer(IntBuffer.allocate(0));
+	}
+
+	public static CommandResult withBuffer(IntBuffer responseBuffer) {
+		return new CommandResult(responseBuffer);
 	}
 
 	public int getByteNumber(int byteNumber) {

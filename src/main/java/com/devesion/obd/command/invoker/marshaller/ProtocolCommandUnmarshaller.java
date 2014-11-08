@@ -20,7 +20,7 @@ class ProtocolCommandUnmarshaller extends AbstractCommandUnmarshaller {
 		checkResponse(responseData);
 
 		if (responseData.contains(ELM_PROTOCOL_ACK_OK)) {
-			return new CommandResult();
+			return CommandResult.empty();
 		}
 
 		throw new ObdInvalidCommandResponseException();
