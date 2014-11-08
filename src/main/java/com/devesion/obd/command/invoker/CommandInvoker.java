@@ -15,25 +15,29 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CommandInvoker {
 
-	private ObdLink obdLink;
-	private CommandMarshaller commandMarshaller = new CommandMarshallerBridge();
-	private CommandUnmarshaller commandUnmarshaller = new CommandUnmarshallerBridge();
+	private final ObdLink obdLink;
+	private final CommandMarshaller commandMarshaller;
+	private final CommandUnmarshaller commandUnmarshaller;
 
 	public CommandInvoker(ObdLink obdLink) {
 		this.obdLink = obdLink;
+		this.commandMarshaller = new CommandMarshallerBridge();
+		this.commandUnmarshaller = new CommandUnmarshallerBridge();
+	}
+
+	public CommandInvoker(ObdLink obdLink, CommandMarshaller commandMarshaller, CommandUnmarshaller commandUnmarshaller) {
+		this.obdLink = obdLink;
+		this.commandMarshaller = commandMarshaller;
+		this.commandUnmarshaller = commandUnmarshaller;
 	}
 
 	public void invoke(ObdCommand command) {
 		log.info("invoking OBD Command '{}'", command);
+
 		String commandData = commandMarshaller.marshal(command);
-
-		log.debug("sending data");
-		log.debug("data " + commandData);
-		obdLink.sendData(commandData);
-		log.debug("data sent, waiting for result");
-
-		String commandResultData = obdLink.readData();
+		String commandResultData = obdLink.sendDataAndReadResponse(commandData);
 		CommandResult result = commandUnmarshaller.unmarshal(command, commandResultData);
+
 		log.info("OBD Command result '{}'", result);
 
 		command.setResult(result);

@@ -23,6 +23,11 @@ public class ObdLink {
 		this.outputStream = outputStream;
 	}
 
+	public String sendDataAndReadResponse(String data) {
+		sendData(data);
+		return readData();
+	}
+
 	public void sendData(String data) {
 		log.debug("Sending bytes '{}'", data);
 		writeBytes(data);
@@ -38,6 +43,7 @@ public class ObdLink {
 	}
 
 	public String readData() {
+		log.debug("waiting for response");
 		StringBuilder res = new StringBuilder();
 		char c;
 		while ((c = readChar()) != ELM_PROMPT) {

@@ -7,11 +7,15 @@ import org.testng.annotations.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.MockitoAnnotations.initMocks;
+import static org.powermock.api.mockito.PowerMockito.verifyZeroInteractions;
 
 public class AbstractCommandTest {
 
 	@Mock
 	private CommandResult commandResultMock;
+
+	@Mock
+	private ObdCommandVisitor obdCommandVisitorMock;
 
 	private AbstractCommand sut;
 
@@ -22,7 +26,7 @@ public class AbstractCommandTest {
 	}
 
 	@Test
-	public void testGetResult() throws Exception {
+	public void getResultShouldReturnSetValue() throws Exception {
 		// given
 
 		// when
@@ -31,6 +35,17 @@ public class AbstractCommandTest {
 
 		// then
 		assertThat(commandResult).isEqualTo(commandResultMock);
+	}
+
+	@Test
+	public void acceptShouldDoNothing() throws Exception {
+		// given
+
+		// when
+		sut.accept(obdCommandVisitorMock);
+
+		// then
+		verifyZeroInteractions(obdCommandVisitorMock);
 	}
 
 	private static class FakeAbstractCommand extends AbstractCommand {
