@@ -12,14 +12,13 @@ import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Enumeration;
 
-/**
- *
- */
+@Slf4j
 public class ObdAdapterClient implements SerialPortEventListener {
 	private static final int TIME_OUT = 2000;
 	private static final int DATA_RATE = 9600;
@@ -39,7 +38,6 @@ public class ObdAdapterClient implements SerialPortEventListener {
 
 		while (portIdentifiers.hasMoreElements()) {
 			CommPortIdentifier pid = (CommPortIdentifier) portIdentifiers.nextElement();
-			System.out.println("PORT " + pid.getName());
 			if (pid.getPortType() == CommPortIdentifier.PORT_SERIAL &&
 					pid.getName().equals(wantedPortName)) {
 				portId = pid;
@@ -65,7 +63,7 @@ public class ObdAdapterClient implements SerialPortEventListener {
 			serialPort.addEventListener(this);
 			serialPort.notifyOnDataAvailable(false);
 		} catch (Exception e) {
-			System.err.println(e.toString());
+			log.error("cannot connect to serial port", e);
 		}
 
 		ObdLink obdLink = new ObdLink(is, os);
@@ -78,47 +76,38 @@ public class ObdAdapterClient implements SerialPortEventListener {
 		commandInvoker.invoke(selectProtocolCommand);
 
 		EngineRpmCommand engineRpmCommand = new EngineRpmCommand();
+		log.info("command - '{}'", engineRpmCommand);
 		commandInvoker.invoke(engineRpmCommand);
-		System.out.println(engineRpmCommand.getValue());
+		log.info("command response - '{}'\n", engineRpmCommand.getValue());
 
 //		EngineLoadCommand engineLoadCommand = new EngineLoadCommand();
 //		commandInvoker.invoke(engineLoadCommand);
-//		System.out.println(engineLoadCommand.getValue());
 
 		EngineCoolantTemperatureCommand engineCoolantTemperatureCommand = new EngineCoolantTemperatureCommand();
+		log.info("command - '{}'", engineCoolantTemperatureCommand);
 		commandInvoker.invoke(engineCoolantTemperatureCommand);
-		System.out.println(engineCoolantTemperatureCommand.getValue());
+		log.info("command response - '{}'\n", engineCoolantTemperatureCommand.getValue());
 
 //		IntakeAirTemperatureCommand intakeAirTemperatureCommand = new IntakeAirTemperatureCommand();
 //		commandInvoker.invoke(intakeAirTemperatureCommand);
-//		System.out.println(intakeAirTemperatureCommand.getValue());
 
 		MassAirFlowCommand massAirFlowCOmmand = new MassAirFlowCommand();
+		log.info("command - '{}'", massAirFlowCOmmand);
 		commandInvoker.invoke(massAirFlowCOmmand);
-		System.out.println(massAirFlowCOmmand.getValue());
+		log.info("command response - '{}'\n", massAirFlowCOmmand.getValue());
 
 		ThrottlePositionCommand throttlePositionCommand = new ThrottlePositionCommand();
+		log.info("command - '{}'", throttlePositionCommand);
 		commandInvoker.invoke(throttlePositionCommand);
-		System.out.println(throttlePositionCommand.getValue());
+		log.info("command response - '{}'\n", throttlePositionCommand.getValue());
 
 //		EngineRuntimeCommand engineRuntimeCommand = new EngineRuntimeCommand();
 //		commandInvoker.invoke(engineRuntimeCommand);
-//		System.out.println(engineRuntimeCommand.getValue());
-
-
 
 	}
 
 	@Override
 	public void serialEvent(SerialPortEvent oEvent) {
-		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-			try {
-				//String inputLine = is.readLine();
-				//System.out.println(inputLine);
-			} catch (Exception e) {
-				System.err.println(e.toString());
-			}
-		}
 		// Ignore all the other eventTypes, but you should consider the other
 	}
 }
