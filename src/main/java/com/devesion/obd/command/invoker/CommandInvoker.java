@@ -7,6 +7,8 @@ import com.devesion.obd.command.invoker.marshaller.CommandUnmarshallerBridge;
 import com.devesion.obd.command.invoker.marshaller.CommandMarshallerBridge;
 
 import com.devesion.obd.link.ObdLink;
+import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -16,7 +18,11 @@ import lombok.extern.slf4j.Slf4j;
 public class CommandInvoker {
 
 	private final ObdLink obdLink;
+
+	@Getter(AccessLevel.PACKAGE)
 	private final CommandMarshaller commandMarshaller;
+
+	@Getter(AccessLevel.PACKAGE)
 	private final CommandUnmarshaller commandUnmarshaller;
 
 	public CommandInvoker(ObdLink obdLink) {

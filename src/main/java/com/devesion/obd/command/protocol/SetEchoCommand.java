@@ -7,7 +7,7 @@ public class SetEchoCommand extends AbstractProtocolCommand {
 
 	private boolean enabled;
 
-	public SetEchoCommand(boolean enabled) {
+	private SetEchoCommand(boolean enabled) {
 		this.enabled = enabled;
 	}
 

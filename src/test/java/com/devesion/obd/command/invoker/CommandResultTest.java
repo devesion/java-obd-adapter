@@ -1,7 +1,6 @@
 package com.devesion.obd.command.invoker;
 
 import com.devesion.obd.TestSupport;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.nio.IntBuffer;
@@ -12,12 +11,8 @@ public class CommandResultTest {
 
 	private CommandResult sut;
 
-	@BeforeMethod
-	private void beforeMethod() {
-	}
-
 	@Test
-	public void constructorShouldSetPassedBuffer() throws Exception {
+	public void withBufferShouldCreateResultWithPassedBuffer() throws Exception {
 		// given
 		IntBuffer expectedResponseBuffer = IntBuffer.allocate(0);
 
@@ -27,6 +22,18 @@ public class CommandResultTest {
 
 		// then
 		assertThat(responseBuffer).isEqualTo(expectedResponseBuffer);
+	}
+
+	@Test
+	public void emptyShouldCreateResultWithEmptyBuffer() throws Exception {
+		// given
+
+		// when
+		sut = CommandResult.empty();
+		IntBuffer responseBuffer = sut.getResponseBuffer();
+
+		// then
+		assertThat(responseBuffer.limit()).isEqualTo(0);
 	}
 
 	@Test

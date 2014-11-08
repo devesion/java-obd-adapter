@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
@@ -44,6 +45,20 @@ public class CommandInvokerTest {
 		when(obdLinkMock.sendDataAndReadResponse(commandData)).thenReturn(commandResponseData);
 		when(commandMarshallerMock.marshal(obdCommandMock)).thenReturn(commandData);
 		when(commandUnmarshallerMock.unmarshal(obdCommandMock, commandResponseData)).thenReturn(commandResultMock);
+	}
+
+	@Test
+	public void constructorShouldSetDefaultBridges() throws Exception {
+		// given
+
+		// when
+		sut = new CommandInvoker(obdLinkMock);
+
+		// then
+		CommandMarshaller commandMarshaller = sut.getCommandMarshaller();
+		CommandUnmarshaller commandUnmarshaller = sut.getCommandUnmarshaller();
+		assertThat(commandMarshaller).isNotNull();
+		assertThat(commandUnmarshaller).isNotNull();
 	}
 
 	@Test

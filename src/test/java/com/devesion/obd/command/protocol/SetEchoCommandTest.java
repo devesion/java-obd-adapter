@@ -1,6 +1,5 @@
 package com.devesion.obd.command.protocol;
 
-import com.devesion.obd.TestSupport;
 import org.testng.annotations.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -10,17 +9,28 @@ public class SetEchoCommandTest {
 	private SetEchoCommand sut;
 
 	@Test
-	public void getOperandsShouldReturnProperElmCommand() throws Exception {
+	public void offShouldSetEchoOff() throws Exception {
 		// given
-		boolean echoStatus = TestSupport.getRandomBoolean();
-		int echoStatusInt = echoStatus ? 1 : 0;
-		String expectedOperands = "E" + echoStatusInt;
+		String expectedOperands = "E0";
 
 		// when
-		sut = new SetEchoCommand(echoStatus);
-		String operands = sut.getOperands();
+		sut = SetEchoCommand.off();
 
 		// then
+		String operands = sut.getOperands();
+		assertThat(operands).isEqualTo(expectedOperands);
+	}
+
+	@Test
+	public void onShouldSetEchoOn() throws Exception {
+		// given
+		String expectedOperands = "E1";
+
+		// when
+		sut = SetEchoCommand.on();
+
+		// then
+		String operands = sut.getOperands();
 		assertThat(operands).isEqualTo(expectedOperands);
 	}
 }
