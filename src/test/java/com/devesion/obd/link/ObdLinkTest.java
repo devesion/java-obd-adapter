@@ -1,17 +1,22 @@
 package com.devesion.obd.link;
 
 import com.devesion.obd.TestSupport;
+import com.devesion.obd.shared.ObdCommunicationException;
 import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
 import static com.devesion.obd.TestSupport.InputStreamAnswer;
+import static com.googlecode.catchexception.CatchException.catchException;
+import static com.googlecode.catchexception.CatchException.caughtException;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -29,6 +34,7 @@ public class ObdLinkTest {
 	@BeforeMethod
 	private void beforeMethod() {
 		initMocks(this);
+		sut = new ObdLink(isMock, osMock);
 	}
 
 	@Test
@@ -38,7 +44,6 @@ public class ObdLinkTest {
 		String streamData = "   " + expectedData + ">";
 
 		when(isMock.read()).thenAnswer(new InputStreamAnswer(streamData));
-		sut = new ObdLink(isMock, osMock);
 
 		// when
 		String readData = sut.readData();
@@ -48,10 +53,22 @@ public class ObdLinkTest {
 	}
 
 	@Test
+	@SuppressWarnings("unchecked")
+	public void readDataShouldWrapExceptionsWithRuntimeException() throws Exception {
+		// given
+		when(isMock.read()).thenThrow(IOException.class);
+
+		// when
+		catchException(sut).readData();
+
+		// then
+		assertThat(caughtException()).isExactlyInstanceOf(ObdCommunicationException.class);
+	}
+
+	@Test
 	public void sendDataShouldWriteDataToTheOutputStream() throws Exception {
 		// given
 		String expectedData = getRandomStreamData();
-		sut = new ObdLink(isMock, osMock);
 
 		// when
 		sut.sendData(expectedData);
@@ -63,13 +80,40 @@ public class ObdLinkTest {
 	}
 
 	@Test
+	@SuppressWarnings("unchecked")
+	public void sendDataShouldWrapExceptionsDuringWriteWithRuntimeException() throws Exception {
+		// given
+		String expectedData = getRandomStreamData();
+		doThrow(IOException.class).when(osMock).write(expectedData.getBytes());
+
+		// when
+		catchException(sut).sendData(expectedData);
+
+		// then
+		assertThat(caughtException()).isExactlyInstanceOf(ObdCommunicationException.class);
+	}
+
+	@Test
+	@SuppressWarnings("unchecked")
+	public void sendDataShouldWrapExceptionsDuringFlushWithRuntimeException() throws Exception {
+		// given
+		String expectedData = getRandomStreamData();
+		doThrow(IOException.class).when(osMock).flush();
+
+		// when
+		catchException(sut).sendData(expectedData);
+
+		// then
+		assertThat(caughtException()).isExactlyInstanceOf(ObdCommunicationException.class);
+	}
+
+	@Test
 	public void testSendDataAndReadResponse() throws Exception {
 		// given
 		String expectedData = getRandomStreamData();
 		String expectedResponseData = getRandomStreamData();
 		String expectedResponseStreamData = "   " + expectedResponseData + ">";
 		when(isMock.read()).thenAnswer(new InputStreamAnswer(expectedResponseStreamData));
-		sut = new ObdLink(isMock, osMock);
 
 		// when
 		String readData = sut.sendDataAndReadResponse(expectedData);
