@@ -55,4 +55,29 @@ abstract class BaseSensorCommandTest {
 		when(unitFactoryMock.createRpmValue(commandResultMock)).thenReturn(sensorCommandValueMock);
 		return unitFactoryMock;
 	}
+
+	protected UnitFactory recordUnitFactoryCreatesTime() {
+		when(unitFactoryMock.createTimeValue(commandResultMock)).thenReturn(sensorCommandValueMock);
+		return unitFactoryMock;
+	}
+
+	protected UnitFactory recordUnitFactoryCreatesFuelConsuption() {
+		when(unitFactoryMock.createFuelConsumptionValue(commandResultMock)).thenReturn(sensorCommandValueMock);
+		return unitFactoryMock;
+	}
+
+	protected UnitFactory recordUnitFactoryCreatesFuelLevel() {
+		when(unitFactoryMock.createFuelLevelValue(commandResultMock)).thenReturn(sensorCommandValueMock);
+		return unitFactoryMock;
+	}
+
+	protected UnitFactory recordUnitFactoryCreatesFuelType() {
+		when(unitFactoryMock.createFuelTypeValue(commandResultMock)).thenReturn(sensorCommandValueMock);
+		return unitFactoryMock;
+	}
+
+	protected UnitFactory recordUnitFactoryCreatesAirFlow() {
+		when(unitFactoryMock.createAirFlowValue(commandResultMock)).thenReturn(sensorCommandValueMock);
+		return unitFactoryMock;
+	}
 }

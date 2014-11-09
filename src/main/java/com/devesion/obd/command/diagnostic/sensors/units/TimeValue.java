@@ -5,11 +5,11 @@ import com.devesion.obd.command.CommandResult;
 /**
  * Represents Time Value Object.
  */
-public class TimeValue extends SimpleValue {
+class TimeValue extends SimpleValue {
 
 	private static final float RPM_DIVISOR = 1.0f;
 
-	public TimeValue(CommandResult commandResult) {
+	TimeValue(CommandResult commandResult) {
 		super(commandResult, RPM_DIVISOR);
 	}
 }

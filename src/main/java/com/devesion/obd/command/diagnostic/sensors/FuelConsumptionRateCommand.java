@@ -3,12 +3,10 @@ package com.devesion.obd.command.diagnostic.sensors;
 import com.devesion.obd.command.diagnostic.sensors.units.SensorCommandValue;
 import com.devesion.obd.shared.ObdNumberedEnum;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 /**
  * Reads current fuel consumption rate.
  */
-@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class FuelConsumptionRateCommand extends AbstractSensorCommand {
 
