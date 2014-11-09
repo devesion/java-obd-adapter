@@ -31,4 +31,8 @@ public final class TestSupport {
 	public static long getRandomLong() {
 		return Math.abs(random.nextLong());
 	}
+
+	public static int getRandomIntByte() {
+		return getRandomInt(255);
+	}
 }

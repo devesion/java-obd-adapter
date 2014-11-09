@@ -2,12 +2,10 @@ package com.devesion.obd.command.diagnostic.sensors;
 
 import com.devesion.obd.command.diagnostic.sensors.units.SensorCommandValue;
 import com.devesion.obd.shared.ObdNumberedEnum;
-import lombok.EqualsAndHashCode;
 
 /**
  * Reads current engine coolant temperature.
  */
-@EqualsAndHashCode(callSuper = true)
 public class EngineCoolantTemperatureCommand extends AbstractSensorCommand {
 
 	@Override
