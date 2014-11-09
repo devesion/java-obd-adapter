@@ -27,16 +27,16 @@ class DiagnosticCommandUnmarshaller extends AbstractCommandUnmarshaller {
 		responseData = omitMagicSequence(diagnosticCommand, responseData);
 		log.info("after omitting magic sequence '{}", responseData);
 
-		checkResponse(responseData);
-		checkDiagnosticResponse(responseData);
+		checkResponse(command, responseData);
+		checkDiagnosticResponse(command, responseData);
 
 		IntBuffer responseBuffer = readByteBuffer(responseData);
 		return CommandResult.withBuffer(responseBuffer);
 	}
 
-	private void checkDiagnosticResponse(String responseData) {
+	private void checkDiagnosticResponse(ObdCommand command, String responseData) {
 		if (!responseData.matches(ELM_DIAGNOSTIC_RESPONSE_REGEXP)) {
-			throw new ObdInvalidCommandResponseException();
+			throw new ObdInvalidCommandResponseException(command);
 		}
 	}
 

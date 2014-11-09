@@ -17,12 +17,12 @@ class ProtocolCommandUnmarshaller extends AbstractCommandUnmarshaller {
 		responseData = normalizeResponse(responseData);
 		log.info("after normalization '{}", responseData);
 
-		checkResponse(responseData);
+		checkResponse(command, responseData);
 
 		if (responseData.contains(ELM_PROTOCOL_ACK_OK)) {
 			return CommandResult.empty();
 		}
 
-		throw new ObdInvalidCommandResponseException();
+		throw new ObdInvalidCommandResponseException(command);
 	}
 }

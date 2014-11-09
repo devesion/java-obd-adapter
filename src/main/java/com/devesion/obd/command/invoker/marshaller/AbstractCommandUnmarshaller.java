@@ -1,5 +1,6 @@
 package com.devesion.obd.command.invoker.marshaller;
 
+import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.shared.ObdNoDataForCommandResponseException;
 
 abstract class AbstractCommandUnmarshaller implements CommandUnmarshaller {
@@ -11,9 +12,9 @@ abstract class AbstractCommandUnmarshaller implements CommandUnmarshaller {
 		return responseData.replaceAll(ELM_SPACE, "").toUpperCase();
 	}
 
-	protected void checkResponse(String responseData) {
+	protected void checkResponse(ObdCommand command, String responseData) {
 		if (responseData.contains(ELM_NODATA_ERROR)) {
-			throw new ObdNoDataForCommandResponseException();
+			throw new ObdNoDataForCommandResponseException(command);
 		}
 	}
 }

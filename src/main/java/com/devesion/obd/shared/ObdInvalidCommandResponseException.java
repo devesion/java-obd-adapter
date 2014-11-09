@@ -1,22 +1,13 @@
 package com.devesion.obd.shared;
 
+import com.devesion.obd.command.ObdCommand;
+
 /**
  * Represents invalid OBD command.
  */
-public class ObdInvalidCommandResponseException extends ObdCommunicationException {
+public class ObdInvalidCommandResponseException extends ObdCommandResponseException {
 
-	public ObdInvalidCommandResponseException() {
-	}
-
-	public ObdInvalidCommandResponseException(String message) {
-		super(message);
-	}
-
-	public ObdInvalidCommandResponseException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
-	public ObdInvalidCommandResponseException(Throwable cause) {
-		super(cause);
+	public ObdInvalidCommandResponseException(ObdCommand command) {
+		super(command);
 	}
 }
