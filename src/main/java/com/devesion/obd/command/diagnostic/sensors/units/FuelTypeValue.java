@@ -2,6 +2,8 @@ package com.devesion.obd.command.diagnostic.sensors.units;
 
 import com.devesion.obd.command.CommandResult;
 import com.google.common.base.Optional;
+import lombok.AccessLevel;
+import lombok.Getter;
 
 /**
  * Represents Fuel Type Value Object.
@@ -30,14 +32,14 @@ class FuelTypeValue extends AbstractSensorCommandValue {
 		CNG(0x06),
 		PROPANE(0x07),
 		ELECTRIC(0x08),
-		BIFUEL_GASOLINE(0x09),
-		BIFUEL_METHANOL(0x0A),
-		BIFUEL_ETHANOL(0x0B),
-		BIFUEL_LPG(0x0C),
-		BIFUEL_CNG(0x0D),
-		BIFUEL_PROPANE(0x0E),
-		BIFUEL_ELECTRIC(0x0F),
-		BIFUEL_GASOLINE_ELECTRIC(0x10),
+		BIFUEL_RUNNING_GASOLINE(0x09),
+		BIFUEL_RUNNING_METHANOL(0x0A),
+		BIFUEL_RUNNING_ETHANOL(0x0B),
+		BIFUEL_RUNNING_LPG(0x0C),
+		BIFUEL_RUNNING_CNG(0x0D),
+		BIFUEL_RUNNING_PROPANE(0x0E),
+		BIFUEL_RUNNING_ELECTRIC(0x0F),
+		BIFUEL_RUNNING_GASOLINE_ELECTRIC(0x10),
 		HYBRID_GASOLINE(0x11),
 		HYBRID_ETHANOL(0x12),
 		HYBRID_DIESEL(0x13),
@@ -45,6 +47,7 @@ class FuelTypeValue extends AbstractSensorCommandValue {
 		HYBRID_MIXED(0x15),
 		HYBRID_REGENERATIVE(0x16);
 
+		@Getter(AccessLevel.PACKAGE)
 		private int typeNumber;
 
 		FuelType(int typeNumber) {
