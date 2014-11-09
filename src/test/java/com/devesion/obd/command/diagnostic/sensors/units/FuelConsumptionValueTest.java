@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class AirFlowValueTest extends BaseValueTest {
+public class FuelConsumptionValueTest extends BaseValueTest {
 
 	@BeforeMethod
 	private void beforeMethod() {
@@ -15,11 +15,11 @@ public class AirFlowValueTest extends BaseValueTest {
 
 	@Test
 	public void constructorShouldSetDefaultDivisorAndMultiplier() throws Exception {
-		constructorShouldSetDefaultDivisorAndMultiplier(256, 100);
+		constructorShouldSetDefaultDivisorAndMultiplier(256, 20);
 	}
 
 	@Override
 	protected AbstractSensorCommandValue createSut(CommandResult commandResultMock) {
-		return new AirFlowValue(commandResultMock);
+		return new FuelConsumptionValue(commandResultMock);
 	}
 }
