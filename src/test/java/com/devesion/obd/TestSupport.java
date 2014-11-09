@@ -1,5 +1,8 @@
 package com.devesion.obd;
 
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
+
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -34,5 +37,20 @@ public final class TestSupport {
 
 	public static int getRandomIntByte() {
 		return getRandomInt(255);
+	}
+
+	public static class InputStreamAnswer implements Answer {
+
+		private final byte[] rawData;
+		private int curIndex = 0;
+
+		public InputStreamAnswer(String streamData) {
+			this.rawData = streamData.getBytes();
+		}
+
+		@Override
+		public Object answer(InvocationOnMock invocation) throws Throwable {
+			return rawData[curIndex++];
+		}
 	}
 }
