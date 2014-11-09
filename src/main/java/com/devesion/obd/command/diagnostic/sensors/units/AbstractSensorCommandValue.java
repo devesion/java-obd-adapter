@@ -1,9 +1,12 @@
 package com.devesion.obd.command.diagnostic.sensors.units;
 
 import com.devesion.obd.command.CommandResult;
+import lombok.AccessLevel;
+import lombok.Getter;
 
 abstract class AbstractSensorCommandValue implements SensorCommandValue {
 
+	@Getter(AccessLevel.PACKAGE)
 	private CommandResult commandResult;
 
 	public AbstractSensorCommandValue(CommandResult commandResult) {
