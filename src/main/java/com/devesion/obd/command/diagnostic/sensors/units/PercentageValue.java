@@ -1,13 +1,13 @@
 package com.devesion.obd.command.diagnostic.sensors.units;
 
-import com.devesion.obd.command.invoker.CommandResult;
+import com.devesion.obd.command.CommandResult;
 
 /**
  * Represents Percentage Value Object.
  */
-public class PercentageValue extends AbstractSensorCommandValue {
+class PercentageValue extends AbstractSensorCommandValue {
 
-	public PercentageValue(CommandResult commandResult) {
+	PercentageValue(CommandResult commandResult) {
 		super(commandResult);
 	}
 

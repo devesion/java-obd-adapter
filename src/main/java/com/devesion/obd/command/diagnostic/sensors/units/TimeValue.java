@@ -1,6 +1,6 @@
 package com.devesion.obd.command.diagnostic.sensors.units;
 
-import com.devesion.obd.command.invoker.CommandResult;
+import com.devesion.obd.command.CommandResult;
 
 /**
  * Represents Time Value Object.

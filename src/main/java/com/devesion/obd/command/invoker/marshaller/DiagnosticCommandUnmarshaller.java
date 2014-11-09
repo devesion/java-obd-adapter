@@ -2,7 +2,7 @@ package com.devesion.obd.command.invoker.marshaller;
 
 import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.command.diagnostic.DiagnosticCommand;
-import com.devesion.obd.command.invoker.CommandResult;
+import com.devesion.obd.command.CommandResult;
 import com.devesion.obd.shared.HexTools;
 import com.devesion.obd.shared.ObdInvalidCommandResponseException;
 import lombok.extern.slf4j.Slf4j;

@@ -1,12 +1,12 @@
 package com.devesion.obd.command.diagnostic.sensors.units;
 
-import com.devesion.obd.command.invoker.CommandResult;
+import com.devesion.obd.command.CommandResult;
 import com.google.common.base.Optional;
 
 /**
  * Represents Fuel Type Value Object.
  */
-public class FuelTypeValue extends AbstractSensorCommandValue {
+class FuelTypeValue extends AbstractSensorCommandValue {
 
 	public FuelTypeValue(CommandResult commandResult) {
 		super(commandResult);

@@ -1,13 +1,13 @@
 package com.devesion.obd.command.diagnostic.sensors.units;
 
-import com.devesion.obd.command.invoker.CommandResult;
+import com.devesion.obd.command.CommandResult;
 
 /**
- *
+ * Represents Pressure Value Object.
  */
-public class PressureValue extends AbstractSensorCommandValue {
+class PressureValue extends AbstractSensorCommandValue {
 
-	public PressureValue(CommandResult commandResult) {
+	PressureValue(CommandResult commandResult) {
 		super(commandResult);
 	}
 

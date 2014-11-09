@@ -6,26 +6,26 @@ import org.testng.annotations.Test;
 
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class EngineCoolantTemperatureCommandTest extends BaseSensorCommandTest {
+public class EngineLoadCommandTest extends BaseSensorCommandTest {
 
-	private EngineCoolantTemperatureCommand sut;
+	private EngineLoadCommand sut;
 
 	@BeforeMethod
 	private void beforeMethod() {
 		initMocks(this);
 
-		sut = new EngineCoolantTemperatureCommand();
-		UnitFactory unitFactoryMock = recordUnitFactoryCreatesTemperature();
+		sut = new EngineLoadCommand();
+		UnitFactory unitFactoryMock = recordUnitFactoryCreatesPercentage();
 		sut.setUnitFactory(unitFactoryMock);
 	}
 
 	@Test
 	public void getPidShouldReturnObdPidForSensor() throws Exception {
-		testCommandReturnsProperPid(sut, SensorCommandPids.ENGINE_COOLANT_TEMPERATURE);
+		testCommandReturnsProperPid(sut, SensorCommandPids.ENGINE_LOAD);
 	}
 
 	@Test
-	public void getValueShouldCreateTemperatureValueObjectFromResultBuffer() throws Exception {
+	public void getValueShouldCreatePercentageValueObjectFromResultBuffer() throws Exception {
 		testCommandGetValueCreateProperValueObject(sut);
 	}
 }

@@ -1,6 +1,6 @@
 package com.devesion.obd.command;
 
-import com.devesion.obd.command.invoker.CommandResult;
+import com.devesion.obd.command.CommandResult;
 
 /**
  * Represents OBD command interface.

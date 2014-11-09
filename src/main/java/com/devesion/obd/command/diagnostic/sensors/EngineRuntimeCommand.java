@@ -1,7 +1,6 @@
 package com.devesion.obd.command.diagnostic.sensors;
 
 import com.devesion.obd.command.diagnostic.sensors.units.SensorCommandValue;
-import com.devesion.obd.command.diagnostic.sensors.units.TimeValue;
 import com.devesion.obd.shared.ObdNumberedEnum;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -20,6 +19,6 @@ public class EngineRuntimeCommand extends AbstractSensorCommand {
 
 	@Override
 	public SensorCommandValue getValue() {
-		return new TimeValue(getResult());
+		return getUnitFactory().createTimeValue(getResult());
 	}
 }

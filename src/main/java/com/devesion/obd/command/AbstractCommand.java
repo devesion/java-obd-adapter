@@ -1,6 +1,5 @@
 package com.devesion.obd.command;
 
-import com.devesion.obd.command.invoker.CommandResult;
 import lombok.ToString;
 
 /**

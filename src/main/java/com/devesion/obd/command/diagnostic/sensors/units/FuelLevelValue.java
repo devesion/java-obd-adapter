@@ -1,13 +1,13 @@
 package com.devesion.obd.command.diagnostic.sensors.units;
 
-import com.devesion.obd.command.invoker.CommandResult;
+import com.devesion.obd.command.CommandResult;
 
 /**
  * Represents Fuel Level Value Object.
  */
-public class FuelLevelValue extends SimpleValue {
+class FuelLevelValue extends SimpleValue {
 
-	public FuelLevelValue(CommandResult commandResult) {
+	FuelLevelValue(CommandResult commandResult) {
 		super(commandResult, 100, 255);
 	}
 }

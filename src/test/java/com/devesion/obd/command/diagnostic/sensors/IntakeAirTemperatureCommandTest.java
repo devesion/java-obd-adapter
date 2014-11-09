@@ -6,22 +6,22 @@ import org.testng.annotations.Test;
 
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class EngineCoolantTemperatureCommandTest extends BaseSensorCommandTest {
+public class IntakeAirTemperatureCommandTest extends BaseSensorCommandTest {
 
-	private EngineCoolantTemperatureCommand sut;
+	private IntakeAirTemperatureCommand sut;
 
 	@BeforeMethod
 	private void beforeMethod() {
 		initMocks(this);
 
-		sut = new EngineCoolantTemperatureCommand();
+		sut = new IntakeAirTemperatureCommand();
 		UnitFactory unitFactoryMock = recordUnitFactoryCreatesTemperature();
 		sut.setUnitFactory(unitFactoryMock);
 	}
 
 	@Test
 	public void getPidShouldReturnObdPidForSensor() throws Exception {
-		testCommandReturnsProperPid(sut, SensorCommandPids.ENGINE_COOLANT_TEMPERATURE);
+		testCommandReturnsProperPid(sut, SensorCommandPids.INTAKE_AIR_TEMPERATURE);
 	}
 
 	@Test

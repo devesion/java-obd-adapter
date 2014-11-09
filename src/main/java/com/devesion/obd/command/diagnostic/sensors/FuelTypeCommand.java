@@ -1,6 +1,5 @@
 package com.devesion.obd.command.diagnostic.sensors;
 
-import com.devesion.obd.command.diagnostic.sensors.units.FuelTypeValue;
 import com.devesion.obd.command.diagnostic.sensors.units.SensorCommandValue;
 import com.devesion.obd.shared.ObdNumberedEnum;
 import lombok.EqualsAndHashCode;
@@ -20,6 +19,6 @@ public class FuelTypeCommand extends AbstractSensorCommand {
 
 	@Override
 	public SensorCommandValue getValue() {
-		return new FuelTypeValue(getResult());
+		return getUnitFactory().createFuelTypeValue(getResult());
 	}
 }

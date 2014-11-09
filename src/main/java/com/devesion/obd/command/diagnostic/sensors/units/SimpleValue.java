@@ -1,20 +1,20 @@
 package com.devesion.obd.command.diagnostic.sensors.units;
 
-import com.devesion.obd.command.invoker.CommandResult;
+import com.devesion.obd.command.CommandResult;
 
-public class SimpleValue extends AbstractSensorCommandValue {
+class SimpleValue extends AbstractSensorCommandValue {
 
 	private static final int DEFAULT_MULTIPLIER = 256;
 	private final float multiplier;
 	private final float divisor;
 
-	public SimpleValue(CommandResult commandResult, float divisor) {
+	SimpleValue(CommandResult commandResult, float divisor) {
 		super(commandResult);
 		this.multiplier = DEFAULT_MULTIPLIER;
 		this.divisor = divisor;
 	}
 
-	public SimpleValue(CommandResult commandResult, float multiplier, float divisor) {
+	SimpleValue(CommandResult commandResult, float multiplier, float divisor) {
 		super(commandResult);
 		this.multiplier = multiplier;
 		this.divisor = divisor;

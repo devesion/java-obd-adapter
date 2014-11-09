@@ -1,4 +1,4 @@
-package com.devesion.obd.command.invoker;
+package com.devesion.obd.command;
 
 import lombok.AccessLevel;
 import lombok.Getter;

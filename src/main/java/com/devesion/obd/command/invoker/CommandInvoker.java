@@ -1,5 +1,6 @@
 package com.devesion.obd.command.invoker;
 
+import com.devesion.obd.command.CommandResult;
 import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.command.invoker.marshaller.CommandMarshaller;
 import com.devesion.obd.command.invoker.marshaller.CommandUnmarshaller;

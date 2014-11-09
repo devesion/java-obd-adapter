@@ -1,4 +1,4 @@
-package com.devesion.obd.command.invoker;
+package com.devesion.obd.command;
 
 import com.devesion.obd.TestSupport;
 import org.testng.annotations.Test;

@@ -1,13 +1,13 @@
 package com.devesion.obd.command.diagnostic.sensors.units;
 
-import com.devesion.obd.command.invoker.CommandResult;
+import com.devesion.obd.command.CommandResult;
 
 /**
- *
+ * Represents Voltage Value Object.
  */
-public class VoltageValue extends AbstractSensorCommandValue {
+class VoltageValue extends AbstractSensorCommandValue {
 
-	public VoltageValue(CommandResult commandResult) {
+	VoltageValue(CommandResult commandResult) {
 		super(commandResult);
 	}
 

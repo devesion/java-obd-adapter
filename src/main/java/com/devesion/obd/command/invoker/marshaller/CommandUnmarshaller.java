@@ -1,7 +1,7 @@
 package com.devesion.obd.command.invoker.marshaller;
 
 import com.devesion.obd.command.ObdCommand;
-import com.devesion.obd.command.invoker.CommandResult;
+import com.devesion.obd.command.CommandResult;
 
 /**
  * Represents OBD command unmarshaller interface.
