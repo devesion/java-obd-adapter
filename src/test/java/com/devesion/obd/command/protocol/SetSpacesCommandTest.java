@@ -5,13 +5,13 @@ import org.testng.annotations.Test;
 public class SetSpacesCommandTest extends AbstractSetStateCommandTest {
 
 	@Test
-	public void constructorShouldSetStateOff() throws Exception {
-		super.constructorShouldSetStateOff();
+	public void constructorShouldSetSpacesOff() throws Exception {
+		constructorShouldSetStateOff();
 	}
 
 	@Test
-	public void constructorShouldSetStateOn() throws Exception {
-		super.constructorShouldSetStateOn();
+	public void constructorShouldSetSpacesOn() throws Exception {
+		constructorShouldSetStateOn();
 	}
 
 	@Override

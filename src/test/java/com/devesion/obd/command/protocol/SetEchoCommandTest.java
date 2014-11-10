@@ -5,13 +5,13 @@ import org.testng.annotations.Test;
 public class SetEchoCommandTest extends AbstractSetStateCommandTest {
 
 	@Test
-	public void constructorShouldSetStateOff() throws Exception {
-		super.constructorShouldSetStateOff();
+	public void constructorShouldSetEchoOff() throws Exception {
+		constructorShouldSetStateOff();
 	}
 
 	@Test
-	public void constructorShouldSetStateOn() throws Exception {
-		super.constructorShouldSetStateOn();
+	public void constructorShouldSetEchoOn() throws Exception {
+		constructorShouldSetStateOn();
 	}
 
 	@Override

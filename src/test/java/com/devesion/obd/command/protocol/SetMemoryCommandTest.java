@@ -5,13 +5,13 @@ import org.testng.annotations.Test;
 public class SetMemoryCommandTest extends AbstractSetStateCommandTest {
 
 	@Test
-	public void constructorShouldSetStateOff() throws Exception {
-		super.constructorShouldSetStateOff();
+	public void constructorShouldSetMemoryOff() throws Exception {
+		constructorShouldSetStateOff();
 	}
 
 	@Test
-	public void constructorShouldSetStateOn() throws Exception {
-		super.constructorShouldSetStateOn();
+	public void constructorShouldSetMemoryOn() throws Exception {
+		constructorShouldSetStateOn();
 	}
 
 	@Override
