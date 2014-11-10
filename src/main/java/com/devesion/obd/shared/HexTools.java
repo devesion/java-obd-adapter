@@ -11,6 +11,10 @@ public final class HexTools {
 	}
 
 	public static String toHexString(ObdNumberedEnum numberedEnum) {
-		return Integer.toHexString(0x100 | (0xFF & numberedEnum.getNumber())).substring(1).toUpperCase();
+		return toHexString(numberedEnum.getNumber());
+	}
+
+    public static String toHexString(int value) {
+		return Integer.toHexString(0x100 | (0xFF & value)).substring(1).toUpperCase();
 	}
 }

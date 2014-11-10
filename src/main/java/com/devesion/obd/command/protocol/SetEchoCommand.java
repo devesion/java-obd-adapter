@@ -1,7 +1,7 @@
 package com.devesion.obd.command.protocol;
 
 /**
- * Represents AT Set Echo Command.
+ * Represents AT Set Echo On/Off Command.
  */
 public class SetEchoCommand extends AbstractProtocolCommand {
 

@@ -1,12 +1,14 @@
 package com.devesion.obd;
 
-import com.devesion.obd.command.diagnostic.sensors.EngineCoolantTemperatureCommand;
-import com.devesion.obd.command.diagnostic.sensors.EngineRpmCommand;
-import com.devesion.obd.command.diagnostic.sensors.MassAirFlowCommand;
 import com.devesion.obd.command.diagnostic.sensors.ThrottlePositionCommand;
 import com.devesion.obd.command.invoker.CommandInvoker;
+import com.devesion.obd.command.protocol.AdaptiveTimeoutProtocolCommand;
+import com.devesion.obd.command.protocol.ResetCommand;
 import com.devesion.obd.command.protocol.SelectProtocolCommand;
+import com.devesion.obd.command.protocol.SetDefaultsCommand;
 import com.devesion.obd.command.protocol.SetEchoCommand;
+import com.devesion.obd.command.protocol.SetLineFeedCommand;
+import com.devesion.obd.command.protocol.SetSpacesCommand;
 import com.devesion.obd.link.ObdLink;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
@@ -22,6 +24,8 @@ import java.util.Enumeration;
 public class ObdAdapterClient implements SerialPortEventListener {
 	private static final int TIME_OUT = 2000;
 	private static final int DATA_RATE = 9600;
+	private static final int DATA_RATE_FAST = 57600;
+	private static final int DATA_RATE_SUPER_FAST = 115200;
 	private InputStream is;
 	private OutputStream os;
 
@@ -31,7 +35,7 @@ public class ObdAdapterClient implements SerialPortEventListener {
 	}
 
 	private void run() {
-		String wantedPortName = "/dev/pts/34";
+		String wantedPortName = "/dev/pts/32";
 		System.setProperty("gnu.io.rxtx.SerialPorts", wantedPortName);
 		Enumeration portIdentifiers = CommPortIdentifier.getPortIdentifiers();
 		CommPortIdentifier portId = null;
@@ -69,41 +73,58 @@ public class ObdAdapterClient implements SerialPortEventListener {
 		ObdLink obdLink = new ObdLink(is, os);
 		CommandInvoker commandInvoker = new CommandInvoker(obdLink);
 
-		SetEchoCommand setEchoCommand = SetEchoCommand.on();
+		ResetCommand resetCommand = new ResetCommand();
+		commandInvoker.invoke(resetCommand);
+
+		SetDefaultsCommand setDefaultsCommand = new SetDefaultsCommand();
+		commandInvoker.invoke(setDefaultsCommand);
+
+		SetEchoCommand setEchoCommand = SetEchoCommand.off();
 		commandInvoker.invoke(setEchoCommand);
+//
+//		SetMemoryCommand setMemoryCommand = SetMemoryCommand.off();
+//		commandInvoker.invoke(setMemoryCommand);
+
+		SetLineFeedCommand setLinefeedCommand = SetLineFeedCommand.off();
+		commandInvoker.invoke(setLinefeedCommand);
+
+		SetSpacesCommand setSpacesCommand = SetSpacesCommand.off();
+		commandInvoker.invoke(setSpacesCommand);
+
+		AdaptiveTimeoutProtocolCommand adaptiveTimeoutProtocol = new AdaptiveTimeoutProtocolCommand();
+		commandInvoker.invoke(adaptiveTimeoutProtocol);
 
 		SelectProtocolCommand selectProtocolCommand = new SelectProtocolCommand();
 		commandInvoker.invoke(selectProtocolCommand);
 
-		EngineRpmCommand engineRpmCommand = new EngineRpmCommand();
-		log.info("command - '{}'", engineRpmCommand);
-		commandInvoker.invoke(engineRpmCommand);
-		log.info("command response - '{}'\n", engineRpmCommand.getValue());
+//		EngineRpmCommand engineRpmCommand = new EngineRpmCommand();
+//		log.info("command - '{}'", engineRpmCommand);
+//		commandInvoker.invoke(engineRpmCommand);
+//		log.info("command response - '{}'\n", engineRpmCommand.getValue());
+//
+////		EngineLoadCommand engineLoadCommand = new EngineLoadCommand();
+////		commandInvoker.invoke(engineLoadCommand);
+//
+//		EngineCoolantTemperatureCommand engineCoolantTemperatureCommand = new EngineCoolantTemperatureCommand();
+//		log.info("command - '{}'", engineCoolantTemperatureCommand);
+//		commandInvoker.invoke(engineCoolantTemperatureCommand);
+//		log.info("command response - '{}'\n", engineCoolantTemperatureCommand.getValue());
+//
+////		IntakeAirTemperatureCommand intakeAirTemperatureCommand = new IntakeAirTemperatureCommand();
+////		commandInvoker.invoke(intakeAirTemperatureCommand);
+//
+//		MassAirFlowCommand massAirFlowCOmmand = new MassAirFlowCommand();
+//		log.info("command - '{}'", massAirFlowCOmmand);
+//		commandInvoker.invoke(massAirFlowCOmmand);
+//		log.info("command response - '{}'\n", massAirFlowCOmmand.getValue());
 
-//		EngineLoadCommand engineLoadCommand = new EngineLoadCommand();
-//		commandInvoker.invoke(engineLoadCommand);
-
-		EngineCoolantTemperatureCommand engineCoolantTemperatureCommand = new EngineCoolantTemperatureCommand();
-		log.info("command - '{}'", engineCoolantTemperatureCommand);
-		commandInvoker.invoke(engineCoolantTemperatureCommand);
-		log.info("command response - '{}'\n", engineCoolantTemperatureCommand.getValue());
-
-//		IntakeAirTemperatureCommand intakeAirTemperatureCommand = new IntakeAirTemperatureCommand();
-//		commandInvoker.invoke(intakeAirTemperatureCommand);
-
-		MassAirFlowCommand massAirFlowCOmmand = new MassAirFlowCommand();
-		log.info("command - '{}'", massAirFlowCOmmand);
-		commandInvoker.invoke(massAirFlowCOmmand);
-		log.info("command response - '{}'\n", massAirFlowCOmmand.getValue());
-
-		ThrottlePositionCommand throttlePositionCommand = new ThrottlePositionCommand();
-		log.info("command - '{}'", throttlePositionCommand);
-		commandInvoker.invoke(throttlePositionCommand);
-		log.info("command response - '{}'\n", throttlePositionCommand.getValue());
+		for (int i = 0; i < 1000; i++) {
+			ThrottlePositionCommand throttlePositionCommand = new ThrottlePositionCommand();
+			commandInvoker.invoke(throttlePositionCommand);
+		}
 
 //		EngineRuntimeCommand engineRuntimeCommand = new EngineRuntimeCommand();
 //		commandInvoker.invoke(engineRuntimeCommand);
-
 	}
 
 	@Override

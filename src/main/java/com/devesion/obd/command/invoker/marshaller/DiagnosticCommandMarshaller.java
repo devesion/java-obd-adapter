@@ -13,6 +13,6 @@ class DiagnosticCommandMarshaller extends AbstractCommandMarshaller {
 		DiagnosticCommand diagnosticCommand = (DiagnosticCommand) command;
 		String commandMnemonic = HexTools.toHexString(diagnosticCommand.getMode());
 		String commandOperands = HexTools.toHexString(diagnosticCommand.getPid());
-		return buildResponse(commandMnemonic, commandOperands);
+		return buildRequestWithCound(commandMnemonic, commandOperands, 1);
 	}
 }

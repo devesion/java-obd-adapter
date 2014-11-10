@@ -3,10 +3,9 @@ package com.devesion.obd.command.invoker;
 import com.devesion.obd.command.CommandResult;
 import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.command.invoker.marshaller.CommandMarshaller;
+import com.devesion.obd.command.invoker.marshaller.CommandMarshallerBridge;
 import com.devesion.obd.command.invoker.marshaller.CommandUnmarshaller;
 import com.devesion.obd.command.invoker.marshaller.CommandUnmarshallerBridge;
-import com.devesion.obd.command.invoker.marshaller.CommandMarshallerBridge;
-
 import com.devesion.obd.link.ObdLink;
 import lombok.AccessLevel;
 import lombok.Getter;

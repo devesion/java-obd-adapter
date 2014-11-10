@@ -14,6 +14,6 @@ class ProtocolCommandMarshaller extends AbstractCommandMarshaller {
 		ProtocolCommand protocolCommand = (ProtocolCommand) command;
 		String commandMnemonic = PROTOCOL_COMMAND_MNEMONIC;
 		String commandOperands = protocolCommand.getOperands();
-		return buildResponse(commandMnemonic, commandOperands);
+		return buildRequest(commandMnemonic, commandOperands);
 	}
 }

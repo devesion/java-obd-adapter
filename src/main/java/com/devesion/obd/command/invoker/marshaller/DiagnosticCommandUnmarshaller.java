@@ -19,13 +19,14 @@ class DiagnosticCommandUnmarshaller extends AbstractCommandUnmarshaller {
 	@Override
 	public CommandResult unmarshal(ObdCommand command, String responseData) {
 		DiagnosticCommand diagnosticCommand = (DiagnosticCommand) command;
-		log.info("unmarshaling response '{}", responseData);
+		log.info("unmarshaling response");
+		log.info(responseData);
 
 		responseData = normalizeResponse(responseData);
-		log.info("after normalization '{}", responseData);
+		log.info("after normalization '{}'", responseData);
 
 		responseData = omitMagicSequence(diagnosticCommand, responseData);
-		log.info("after omitting magic sequence '{}", responseData);
+		log.info("after omitting magic sequence '{}'", responseData);
 
 		checkResponse(command, responseData);
 		checkDiagnosticResponse(command, responseData);
