@@ -1,27 +1,13 @@
 package com.devesion.obd.command.protocol;
 
 /**
- * Represents AT Set Spacess On/Off Command.
+ * Represents AT Set Spaces On/Off Command.
  */
-public class SetSpacesCommand extends AbstractProtocolCommand {
+public class SetSpacesCommand extends AbstractSetStateCommand {
 
-	private boolean enabled;
+	private static final String SET_SPACES_PREFIX = "S";
 
-	private SetSpacesCommand(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public static SetSpacesCommand on() {
-		return new SetSpacesCommand(true);
-	}
-
-	public static SetSpacesCommand off() {
-		return new SetSpacesCommand(false);
-	}
-
-	@Override
-	public String getOperands() {
-		int enabledInt = enabled ? 1 : 0;
-		return "S" + enabledInt;
+	public SetSpacesCommand(boolean enabled) {
+		super(SET_SPACES_PREFIX, enabled);
 	}
 }

@@ -1,14 +1,14 @@
 package com.devesion.obd.command.protocol;
 
-public class SetEchoCommandTest extends AbstractSetStateCommandTest {
+public class SetMemoryCommandTest extends AbstractSetStateCommandTest {
 
 	@Override
 	protected String getOperandPrefix() {
-		return "E";
+		return "M";
 	}
 
 	@Override
 	protected ProtocolCommand createCommand(boolean state) {
-		return new SetEchoCommand(state);
+		return new SetMemoryCommand(state);
 	}
 }

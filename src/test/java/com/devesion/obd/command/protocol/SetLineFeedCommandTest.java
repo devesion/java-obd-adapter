@@ -1,14 +1,14 @@
 package com.devesion.obd.command.protocol;
 
-public class SetEchoCommandTest extends AbstractSetStateCommandTest {
+public class SetLineFeedCommandTest extends AbstractSetStateCommandTest {
 
 	@Override
 	protected String getOperandPrefix() {
-		return "E";
+		return "L";
 	}
 
 	@Override
 	protected ProtocolCommand createCommand(boolean state) {
-		return new SetEchoCommand(state);
+		return new SetLineFeedCommand(state);
 	}
 }

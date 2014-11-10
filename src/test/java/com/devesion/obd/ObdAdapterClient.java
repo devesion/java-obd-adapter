@@ -79,16 +79,16 @@ public class ObdAdapterClient implements SerialPortEventListener {
 		SetDefaultsCommand setDefaultsCommand = new SetDefaultsCommand();
 		commandInvoker.invoke(setDefaultsCommand);
 
-		SetEchoCommand setEchoCommand = SetEchoCommand.off();
+		SetEchoCommand setEchoCommand = new SetEchoCommand(false);
 		commandInvoker.invoke(setEchoCommand);
 //
-//		SetMemoryCommand setMemoryCommand = SetMemoryCommand.off();
+//		SetMemoryCommand setMemoryCommand = new SetMemoryCommand(false);
 //		commandInvoker.invoke(setMemoryCommand);
 
-		SetLineFeedCommand setLinefeedCommand = SetLineFeedCommand.off();
+		SetLineFeedCommand setLinefeedCommand = new SetLineFeedCommand(false);
 		commandInvoker.invoke(setLinefeedCommand);
 
-		SetSpacesCommand setSpacesCommand = SetSpacesCommand.off();
+		SetSpacesCommand setSpacesCommand = new SetSpacesCommand(false);
 		commandInvoker.invoke(setSpacesCommand);
 
 		AdaptiveTimeoutProtocolCommand adaptiveTimeoutProtocol = new AdaptiveTimeoutProtocolCommand();

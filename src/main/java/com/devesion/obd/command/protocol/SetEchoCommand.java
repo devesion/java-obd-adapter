@@ -3,25 +3,11 @@ package com.devesion.obd.command.protocol;
 /**
  * Represents AT Set Echo On/Off Command.
  */
-public class SetEchoCommand extends AbstractProtocolCommand {
+public class SetEchoCommand extends AbstractSetStateCommand {
 
-	private boolean enabled;
+	private static final String SET_ECHO_PREFIX = "E";
 
-	private SetEchoCommand(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public static SetEchoCommand on() {
-		return new SetEchoCommand(true);
-	}
-
-	public static SetEchoCommand off() {
-		return new SetEchoCommand(false);
-	}
-
-	@Override
-	public String getOperands() {
-		int enabledInt = enabled ? 1 : 0;
-		return "E" + enabledInt;
+	public SetEchoCommand(boolean enabled) {
+		super(SET_ECHO_PREFIX, enabled);
 	}
 }
