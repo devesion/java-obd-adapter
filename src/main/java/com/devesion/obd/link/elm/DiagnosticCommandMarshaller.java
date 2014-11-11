@@ -1,4 +1,4 @@
-package com.devesion.obd.command.invoker.marshaller;
+package com.devesion.obd.link.elm;
 
 import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.command.diagnostic.DiagnosticCommand;
@@ -13,6 +13,6 @@ class DiagnosticCommandMarshaller extends AbstractCommandMarshaller {
 		DiagnosticCommand diagnosticCommand = (DiagnosticCommand) command;
 		String commandMnemonic = HexTools.toHexString(diagnosticCommand.getMode());
 		String commandOperands = HexTools.toHexString(diagnosticCommand.getPid());
-		return buildRequestWithCound(commandMnemonic, commandOperands, 1);
+		return buildRequestWithCount(commandMnemonic, commandOperands, 1);
 	}
 }

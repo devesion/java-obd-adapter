@@ -20,7 +20,7 @@ abstract class BaseSensorCommandTest {
 	@Mock
 	private SensorCommandValue sensorCommandValueMock;
 
-	protected void testCommandReturnsProperPid(SensorCommand sut, SensorCommandPids pid) {
+	protected void testCommandReturnsProperPid(SensorCommand sut, SensorCommandPid pid) {
 		// given
 
 		// when

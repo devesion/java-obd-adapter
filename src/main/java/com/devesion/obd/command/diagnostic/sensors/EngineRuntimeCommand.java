@@ -10,7 +10,7 @@ public class EngineRuntimeCommand extends AbstractSensorCommand {
 
 	@Override
 	public ObdNumberedEnum getPid() {
-		return SensorCommandPids.ENGINE_RUN_TIME;
+		return SensorCommandPid.ENGINE_RUN_TIME;
 	}
 
 	@Override

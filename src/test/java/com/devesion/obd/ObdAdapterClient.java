@@ -10,6 +10,7 @@ import com.devesion.obd.command.protocol.SetEchoCommand;
 import com.devesion.obd.command.protocol.SetLineFeedCommand;
 import com.devesion.obd.command.protocol.SetSpacesCommand;
 import com.devesion.obd.link.ObdLink;
+import com.devesion.obd.link.elm.ElmLink;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
@@ -35,7 +36,7 @@ public class ObdAdapterClient implements SerialPortEventListener {
 	}
 
 	private void run() {
-		String wantedPortName = "/dev/pts/32";
+		String wantedPortName = "/dev/pts/34";
 		System.setProperty("gnu.io.rxtx.SerialPorts", wantedPortName);
 		Enumeration portIdentifiers = CommPortIdentifier.getPortIdentifiers();
 		CommPortIdentifier portId = null;
@@ -70,7 +71,7 @@ public class ObdAdapterClient implements SerialPortEventListener {
 			log.error("cannot connect to serial port", e);
 		}
 
-		ObdLink obdLink = new ObdLink(is, os);
+		ObdLink obdLink = new ElmLink(is, os);
 		CommandInvoker commandInvoker = new CommandInvoker(obdLink);
 
 		ResetCommand resetCommand = new ResetCommand();
@@ -121,6 +122,7 @@ public class ObdAdapterClient implements SerialPortEventListener {
 		for (int i = 0; i < 1000; i++) {
 			ThrottlePositionCommand throttlePositionCommand = new ThrottlePositionCommand();
 			commandInvoker.invoke(throttlePositionCommand);
+			log.info("throttle {}", throttlePositionCommand.getValue().getFloatValue());
 		}
 
 //		EngineRuntimeCommand engineRuntimeCommand = new EngineRuntimeCommand();

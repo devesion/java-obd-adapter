@@ -1,4 +1,4 @@
-package com.devesion.obd.command.invoker.marshaller;
+package com.devesion.obd.link;
 
 import com.devesion.obd.command.ObdCommand;
 

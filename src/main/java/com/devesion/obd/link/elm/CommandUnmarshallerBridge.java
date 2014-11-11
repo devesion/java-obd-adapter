@@ -1,9 +1,10 @@
-package com.devesion.obd.command.invoker.marshaller;
+package com.devesion.obd.link.elm;
 
 import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.command.ObdCommandVisitor;
 import com.devesion.obd.command.diagnostic.DiagnosticCommand;
 import com.devesion.obd.command.CommandResult;
+import com.devesion.obd.link.CommandUnmarshaller;
 import com.devesion.obd.command.protocol.ProtocolCommand;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.Getter;
 /**
  * Represents OBD command unmarshaller bridge implementation.
  */
-public class CommandUnmarshallerBridge implements CommandUnmarshaller {
+class CommandUnmarshallerBridge implements CommandUnmarshaller {
 
 	@Override
 	public CommandResult unmarshal(ObdCommand command, String responseData) {

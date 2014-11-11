@@ -1,4 +1,4 @@
-package com.devesion.obd.command.invoker.marshaller;
+package com.devesion.obd.link.elm;
 
 import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.command.CommandResult;
@@ -12,10 +12,10 @@ class ProtocolCommandUnmarshaller extends AbstractCommandUnmarshaller {
 
 	@Override
 	public CommandResult unmarshal(ObdCommand command, String responseData) {
-		log.info("unmarshaling response '{}", responseData);
+		log.debug("unmarshaling response '{}", responseData);
 
 		responseData = normalizeResponse(responseData);
-		log.info("after normalization '{}", responseData);
+		log.debug("after normalization '{}", responseData);
 
 		if (command.checkResponseEnabled()) {
 			checkResponse(command, responseData);

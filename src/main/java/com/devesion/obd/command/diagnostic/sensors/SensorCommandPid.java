@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * Popular diagnostic command sensor's PIDs - OBD Mode 1.
  */
-public enum SensorCommandPids implements DiagnosticCommandPid {
+public enum SensorCommandPid implements DiagnosticCommandPid {
 	PIDS_SUPPORTED_SET_1(0x00),
 	OVERALL_STATUS(0x01),
 	FUEL_SYSTEM_STATUS(0x03),
@@ -39,7 +39,7 @@ public enum SensorCommandPids implements DiagnosticCommandPid {
 	@Getter
 	private int number;
 
-	SensorCommandPids(int number) {
+	SensorCommandPid(int number) {
 		this.number = number;
 	}
 }

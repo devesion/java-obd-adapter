@@ -10,7 +10,7 @@ public class EngineRpmCommand extends AbstractSensorCommand {
 
 	@Override
 	public ObdNumberedEnum getPid() {
-		return SensorCommandPids.ENGINE_RPM;
+		return SensorCommandPid.ENGINE_RPM;
 	}
 
 	@Override

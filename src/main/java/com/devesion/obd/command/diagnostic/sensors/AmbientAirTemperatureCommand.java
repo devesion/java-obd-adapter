@@ -10,7 +10,7 @@ public class AmbientAirTemperatureCommand extends AbstractSensorCommand {
 
 	@Override
 	public ObdNumberedEnum getPid() {
-		return SensorCommandPids.AMBIENT_AIR_TEMPERATURE;
+		return SensorCommandPid.AMBIENT_AIR_TEMPERATURE;
 	}
 
 	@Override

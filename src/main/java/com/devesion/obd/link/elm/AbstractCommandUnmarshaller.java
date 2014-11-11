@@ -1,6 +1,7 @@
-package com.devesion.obd.command.invoker.marshaller;
+package com.devesion.obd.link.elm;
 
 import com.devesion.obd.command.ObdCommand;
+import com.devesion.obd.link.CommandUnmarshaller;
 import com.devesion.obd.shared.ObdNoDataForCommandResponseException;
 
 abstract class AbstractCommandUnmarshaller implements CommandUnmarshaller {

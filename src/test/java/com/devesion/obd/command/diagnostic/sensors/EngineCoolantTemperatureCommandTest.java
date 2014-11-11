@@ -21,7 +21,7 @@ public class EngineCoolantTemperatureCommandTest extends BaseSensorCommandTest {
 
 	@Test
 	public void getPidShouldReturnObdPidForSensor() throws Exception {
-		testCommandReturnsProperPid(sut, SensorCommandPids.ENGINE_COOLANT_TEMPERATURE);
+		testCommandReturnsProperPid(sut, SensorCommandPid.ENGINE_COOLANT_TEMPERATURE);
 	}
 
 	@Test

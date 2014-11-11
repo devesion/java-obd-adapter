@@ -1,4 +1,4 @@
-package com.devesion.obd.command.invoker.marshaller;
+package com.devesion.obd.link.elm;
 
 import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.command.diagnostic.DiagnosticCommand;
@@ -19,14 +19,14 @@ class DiagnosticCommandUnmarshaller extends AbstractCommandUnmarshaller {
 	@Override
 	public CommandResult unmarshal(ObdCommand command, String responseData) {
 		DiagnosticCommand diagnosticCommand = (DiagnosticCommand) command;
-		log.info("unmarshaling response");
-		log.info(responseData);
+		log.debug("unmarshaling response");
+		log.debug(responseData);
 
 		responseData = normalizeResponse(responseData);
-		log.info("after normalization '{}'", responseData);
+		log.debug("after normalization '{}'", responseData);
 
 		responseData = omitMagicSequence(diagnosticCommand, responseData);
-		log.info("after omitting magic sequence '{}'", responseData);
+		log.debug("after omitting magic sequence '{}'", responseData);
 
 		checkResponse(command, responseData);
 		checkDiagnosticResponse(command, responseData);
@@ -43,7 +43,7 @@ class DiagnosticCommandUnmarshaller extends AbstractCommandUnmarshaller {
 
 	private String omitMagicSequence(DiagnosticCommand command, String responseData) {
 		String magicSequence = ELM_DIAGNOSTIC_ACK_OK + HexTools.toHexString(command.getPid());
-		log.info("magic sequence {}", magicSequence);
+		log.debug("magic sequence {}", magicSequence);
 
 		int magicSequenceIndex = responseData.indexOf(magicSequence);
 		if (magicSequenceIndex < 0) {

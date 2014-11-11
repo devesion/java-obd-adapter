@@ -10,7 +10,7 @@ public class EngineLoadCommand extends AbstractSensorCommand {
 
 	@Override
 	public ObdNumberedEnum getPid() {
-		return SensorCommandPids.ENGINE_LOAD;
+		return SensorCommandPid.ENGINE_LOAD;
 	}
 
 	@Override

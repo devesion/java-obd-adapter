@@ -21,7 +21,7 @@ public class MassAirFlowCommandTest extends BaseSensorCommandTest {
 
 	@Test
 	public void getPidShouldReturnObdPidForSensor() throws Exception {
-		testCommandReturnsProperPid(sut, SensorCommandPids.MASS_AIR_FLOW);
+		testCommandReturnsProperPid(sut, SensorCommandPid.MASS_AIR_FLOW);
 	}
 
 	@Test

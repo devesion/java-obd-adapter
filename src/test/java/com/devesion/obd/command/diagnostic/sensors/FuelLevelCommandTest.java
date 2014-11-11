@@ -21,7 +21,7 @@ public class FuelLevelCommandTest extends BaseSensorCommandTest {
 
 	@Test
 	public void getPidShouldReturnObdPidForSensor() throws Exception {
-		testCommandReturnsProperPid(sut, SensorCommandPids.FUEL_LEVEL);
+		testCommandReturnsProperPid(sut, SensorCommandPid.FUEL_LEVEL);
 	}
 
 	@Test

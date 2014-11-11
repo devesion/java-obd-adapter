@@ -1,5 +1,6 @@
-package com.devesion.obd.command.invoker.marshaller;
+package com.devesion.obd.link.elm;
 
+import com.devesion.obd.link.CommandMarshaller;
 import com.devesion.obd.shared.HexTools;
 
 abstract class AbstractCommandMarshaller implements CommandMarshaller {
@@ -10,7 +11,7 @@ abstract class AbstractCommandMarshaller implements CommandMarshaller {
 		return mnemonic + SPACE + operands + CR;
 	}
 
-	protected String buildRequestWithCound(String mnemonic, String operands, int count) {
+	protected String buildRequestWithCount(String mnemonic, String operands, int count) {
 		return mnemonic + SPACE + operands + HexTools.toHexString(count) + CR;
 	}
 }

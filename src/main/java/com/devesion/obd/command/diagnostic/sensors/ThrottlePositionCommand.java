@@ -10,7 +10,7 @@ public class ThrottlePositionCommand extends AbstractSensorCommand {
 
 	@Override
 	public ObdNumberedEnum getPid() {
-		return SensorCommandPids.THROTTLE_POSITION_PERCENTAGE;
+		return SensorCommandPid.THROTTLE_POSITION_PERCENTAGE;
 	}
 
 	@Override

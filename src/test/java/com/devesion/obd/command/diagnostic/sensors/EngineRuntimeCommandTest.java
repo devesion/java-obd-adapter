@@ -21,7 +21,7 @@ public class EngineRuntimeCommandTest extends BaseSensorCommandTest {
 
 	@Test
 	public void getPidShouldReturnObdPidForSensor() throws Exception {
-		testCommandReturnsProperPid(sut, SensorCommandPids.ENGINE_RUN_TIME);
+		testCommandReturnsProperPid(sut, SensorCommandPid.ENGINE_RUN_TIME);
 	}
 
 	@Test

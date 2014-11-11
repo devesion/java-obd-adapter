@@ -21,7 +21,7 @@ public class EngineLoadCommandTest extends BaseSensorCommandTest {
 
 	@Test
 	public void getPidShouldReturnObdPidForSensor() throws Exception {
-		testCommandReturnsProperPid(sut, SensorCommandPids.ENGINE_LOAD);
+		testCommandReturnsProperPid(sut, SensorCommandPid.ENGINE_LOAD);
 	}
 
 	@Test

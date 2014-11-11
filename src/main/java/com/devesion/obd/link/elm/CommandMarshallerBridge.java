@@ -1,8 +1,9 @@
-package com.devesion.obd.command.invoker.marshaller;
+package com.devesion.obd.link.elm;
 
 import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.command.ObdCommandVisitor;
 import com.devesion.obd.command.diagnostic.DiagnosticCommand;
+import com.devesion.obd.link.CommandMarshaller;
 import com.devesion.obd.command.protocol.ProtocolCommand;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import lombok.Getter;
 /**
  * Represents OBD command marshaller bridge implementation.
  */
-public class CommandMarshallerBridge implements CommandMarshaller {
+class CommandMarshallerBridge implements CommandMarshaller {
 
 	@Override
 	public String marshal(ObdCommand command) {

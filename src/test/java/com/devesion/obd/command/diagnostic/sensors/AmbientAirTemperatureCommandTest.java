@@ -21,7 +21,7 @@ public class AmbientAirTemperatureCommandTest extends BaseSensorCommandTest {
 
 	@Test
 	public void getPidShouldReturnObdPidForSensor() throws Exception {
-		testCommandReturnsProperPid(sut, SensorCommandPids.AMBIENT_AIR_TEMPERATURE);
+		testCommandReturnsProperPid(sut, SensorCommandPid.AMBIENT_AIR_TEMPERATURE);
 	}
 
 	@Test

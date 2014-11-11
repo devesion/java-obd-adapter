@@ -10,7 +10,7 @@ public class EngineCoolantTemperatureCommand extends AbstractSensorCommand {
 
 	@Override
 	public ObdNumberedEnum getPid() {
-		return SensorCommandPids.ENGINE_COOLANT_TEMPERATURE;
+		return SensorCommandPid.ENGINE_COOLANT_TEMPERATURE;
 	}
 
 	@Override

@@ -2,13 +2,7 @@ package com.devesion.obd.command.invoker;
 
 import com.devesion.obd.command.CommandResult;
 import com.devesion.obd.command.ObdCommand;
-import com.devesion.obd.command.invoker.marshaller.CommandMarshaller;
-import com.devesion.obd.command.invoker.marshaller.CommandMarshallerBridge;
-import com.devesion.obd.command.invoker.marshaller.CommandUnmarshaller;
-import com.devesion.obd.command.invoker.marshaller.CommandUnmarshallerBridge;
 import com.devesion.obd.link.ObdLink;
-import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -19,32 +13,14 @@ public class CommandInvoker {
 
 	private final ObdLink obdLink;
 
-	@Getter(AccessLevel.PACKAGE)
-	private final CommandMarshaller commandMarshaller;
-
-	@Getter(AccessLevel.PACKAGE)
-	private final CommandUnmarshaller commandUnmarshaller;
-
 	public CommandInvoker(ObdLink obdLink) {
 		this.obdLink = obdLink;
-		this.commandMarshaller = new CommandMarshallerBridge();
-		this.commandUnmarshaller = new CommandUnmarshallerBridge();
-	}
-
-	public CommandInvoker(ObdLink obdLink, CommandMarshaller commandMarshaller, CommandUnmarshaller commandUnmarshaller) {
-		this.obdLink = obdLink;
-		this.commandMarshaller = commandMarshaller;
-		this.commandUnmarshaller = commandUnmarshaller;
 	}
 
 	public void invoke(ObdCommand command) {
-		log.info("invoking OBD Command '{}'", command);
-
-		String commandData = commandMarshaller.marshal(command);
-		String commandResultData = obdLink.sendDataAndReadResponse(commandData);
-		CommandResult result = commandUnmarshaller.unmarshal(command, commandResultData);
-
-		log.info("OBD Command result '{}'", result);
+		log.debug("invoking OBD Command '{}'", command);
+		CommandResult result = obdLink.sendCommand(command);
+		log.debug("OBD Command result '{}'", result);
 
 		command.setResult(result);
 	}

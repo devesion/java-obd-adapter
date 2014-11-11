@@ -21,7 +21,7 @@ public class ThrottlePositionCommandTest extends BaseSensorCommandTest {
 
 	@Test
 	public void getPidShouldReturnObdPidForSensor() throws Exception {
-		testCommandReturnsProperPid(sut, SensorCommandPids.THROTTLE_POSITION_PERCENTAGE);
+		testCommandReturnsProperPid(sut, SensorCommandPid.THROTTLE_POSITION_PERCENTAGE);
 	}
 
 	@Test

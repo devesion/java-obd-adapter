@@ -10,7 +10,7 @@ public class MassAirFlowCommand extends AbstractSensorCommand {
 
 	@Override
 	public ObdNumberedEnum getPid() {
-		return SensorCommandPids.MASS_AIR_FLOW;
+		return SensorCommandPid.MASS_AIR_FLOW;
 	}
 
 	@Override

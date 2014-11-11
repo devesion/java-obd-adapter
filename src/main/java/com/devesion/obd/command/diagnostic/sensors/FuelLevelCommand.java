@@ -10,7 +10,7 @@ public class FuelLevelCommand extends AbstractSensorCommand {
 
 	@Override
 	public ObdNumberedEnum getPid() {
-		return SensorCommandPids.FUEL_LEVEL;
+		return SensorCommandPid.FUEL_LEVEL;
 	}
 
 	@Override

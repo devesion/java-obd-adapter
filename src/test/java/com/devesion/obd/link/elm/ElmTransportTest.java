@@ -1,4 +1,4 @@
-package com.devesion.obd.link;
+package com.devesion.obd.link.elm;
 
 import com.devesion.obd.TestSupport;
 import com.devesion.obd.shared.ObdCommunicationException;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class ObdLinkTest {
+public class ElmTransportTest {
 
 	@Mock
 	private InputStream isMock;
@@ -29,12 +29,12 @@ public class ObdLinkTest {
 	@Mock
 	private OutputStream osMock;
 
-	private ObdLink sut;
+	private ElmTransport sut;
 
 	@BeforeMethod
 	private void beforeMethod() {
 		initMocks(this);
-		sut = new ObdLink(isMock, osMock);
+		sut = new ElmTransport(isMock, osMock);
 	}
 
 	@Test

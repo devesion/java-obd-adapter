@@ -21,7 +21,7 @@ public class IntakeAirTemperatureCommandTest extends BaseSensorCommandTest {
 
 	@Test
 	public void getPidShouldReturnObdPidForSensor() throws Exception {
-		testCommandReturnsProperPid(sut, SensorCommandPids.INTAKE_AIR_TEMPERATURE);
+		testCommandReturnsProperPid(sut, SensorCommandPid.INTAKE_AIR_TEMPERATURE);
 	}
 
 	@Test
