@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class AbstractProtocolCommandTest {
+public class AbstractAtCommandTest {
 
 	@Mock
 	private ObdCommandVisitor protocolCommandVisitorMock;
