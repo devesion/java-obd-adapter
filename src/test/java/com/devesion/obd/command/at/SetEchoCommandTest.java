@@ -1,4 +1,4 @@
-package com.devesion.obd.command.protocol;
+package com.devesion.obd.command.at;
 
 import org.testng.annotations.Test;
 
@@ -20,7 +20,7 @@ public class SetEchoCommandTest extends AbstractSetStateCommandTest {
 	}
 
 	@Override
-	protected ProtocolCommand createCommand(boolean state) {
+	protected AtCommand createCommand(boolean state) {
 		return new SetEchoCommand(state);
 	}
 }

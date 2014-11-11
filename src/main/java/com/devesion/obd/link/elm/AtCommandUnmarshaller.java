@@ -6,7 +6,7 @@ import com.devesion.obd.shared.ObdInvalidCommandResponseException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-class ProtocolCommandUnmarshaller extends AbstractCommandUnmarshaller {
+class AtCommandUnmarshaller extends AbstractCommandUnmarshaller {
 
 	private static final String ELM_PROTOCOL_ACK_OK = "OK";
 

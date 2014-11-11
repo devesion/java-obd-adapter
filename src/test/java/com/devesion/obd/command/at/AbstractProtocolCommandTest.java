@@ -1,4 +1,4 @@
-package com.devesion.obd.command.protocol;
+package com.devesion.obd.command.at;
 
 import com.devesion.obd.command.ObdCommandVisitor;
 import org.mockito.Mock;
@@ -13,7 +13,7 @@ public class AbstractProtocolCommandTest {
 	@Mock
 	private ObdCommandVisitor protocolCommandVisitorMock;
 
-	private AbstractProtocolCommand sut;
+	private AbstractAtCommand sut;
 
 	@BeforeMethod
 	private void beforeMethod() {
@@ -32,7 +32,7 @@ public class AbstractProtocolCommandTest {
 		verify(protocolCommandVisitorMock).visit(sut);
 	}
 
-	private static class FakeAbstractProtocolCommand extends AbstractProtocolCommand {
+	private static class FakeAbstractProtocolCommand extends AbstractAtCommand {
 		@Override
 		public String getOperands() {
 			return null;

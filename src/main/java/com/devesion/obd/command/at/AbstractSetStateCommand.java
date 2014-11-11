@@ -1,9 +1,9 @@
-package com.devesion.obd.command.protocol;
+package com.devesion.obd.command.at;
 
 /**
  * Represents AT set boolean state Command.
  */
-public class AbstractSetStateCommand extends AbstractProtocolCommand {
+public class AbstractSetStateCommand extends AbstractAtCommand {
 
 	private final String operandPrefix;
 	private final boolean enabled;

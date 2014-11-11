@@ -1,4 +1,4 @@
-package com.devesion.obd.command.protocol;
+package com.devesion.obd.command.at;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

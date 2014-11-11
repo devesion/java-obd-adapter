@@ -1,4 +1,4 @@
-package com.devesion.obd.command.protocol;
+package com.devesion.obd.command.at;
 
 /**
  * Represents AT Set Memory On/Off Command.

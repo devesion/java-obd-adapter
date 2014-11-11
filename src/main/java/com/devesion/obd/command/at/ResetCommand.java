@@ -1,9 +1,9 @@
-package com.devesion.obd.command.protocol;
+package com.devesion.obd.command.at;
 
 /**
  * Represents AT Reset Command.
  */
-public class ResetCommand extends AbstractProtocolCommand {
+public class ResetCommand extends AbstractAtCommand {
 
 	@Override
 	public String getOperands() {

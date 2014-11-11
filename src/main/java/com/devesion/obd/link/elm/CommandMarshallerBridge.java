@@ -2,9 +2,9 @@ package com.devesion.obd.link.elm;
 
 import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.command.ObdCommandVisitor;
+import com.devesion.obd.command.at.AtCommand;
 import com.devesion.obd.command.diagnostic.DiagnosticCommand;
 import com.devesion.obd.link.CommandMarshaller;
-import com.devesion.obd.command.protocol.ProtocolCommand;
 import lombok.AccessLevel;
 import lombok.Getter;
 
@@ -27,8 +27,8 @@ class CommandMarshallerBridge implements CommandMarshaller {
 		private CommandMarshaller concreteMarshaller;
 
 		@Override
-		public void visit(ProtocolCommand command) {
-			concreteMarshaller = new ProtocolCommandMarshaller();
+		public void visit(AtCommand command) {
+			concreteMarshaller = new AtCommandMarshaller();
 		}
 
 		@Override

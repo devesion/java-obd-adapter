@@ -1,9 +1,9 @@
-package com.devesion.obd.command.protocol;
+package com.devesion.obd.command.at;
 
 /**
  * Represents AT Select Protocol Command.
  */
-public class SelectProtocolCommand extends AbstractProtocolCommand {
+public class SelectProtocolCommand extends AbstractAtCommand {
 
 	@Override
 	public String getOperands() {

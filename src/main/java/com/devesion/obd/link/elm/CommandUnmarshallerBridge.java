@@ -2,10 +2,10 @@ package com.devesion.obd.link.elm;
 
 import com.devesion.obd.command.ObdCommand;
 import com.devesion.obd.command.ObdCommandVisitor;
+import com.devesion.obd.command.at.AtCommand;
 import com.devesion.obd.command.diagnostic.DiagnosticCommand;
 import com.devesion.obd.command.CommandResult;
 import com.devesion.obd.link.CommandUnmarshaller;
-import com.devesion.obd.command.protocol.ProtocolCommand;
 import lombok.AccessLevel;
 import lombok.Getter;
 
@@ -28,8 +28,8 @@ class CommandUnmarshallerBridge implements CommandUnmarshaller {
 		private CommandUnmarshaller concreteUnmarshaller;
 
 		@Override
-		public void visit(ProtocolCommand command) {
-			concreteUnmarshaller = new ProtocolCommandUnmarshaller();
+		public void visit(AtCommand command) {
+			concreteUnmarshaller = new AtCommandUnmarshaller();
 		}
 
 		@Override

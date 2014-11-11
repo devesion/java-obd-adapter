@@ -1,14 +1,14 @@
 package com.devesion.obd;
 
+import com.devesion.obd.command.at.AdaptiveTimeoutProtocolCommand;
 import com.devesion.obd.command.diagnostic.sensors.ThrottlePositionCommand;
 import com.devesion.obd.command.invoker.CommandInvoker;
-import com.devesion.obd.command.protocol.AdaptiveTimeoutProtocolCommand;
-import com.devesion.obd.command.protocol.ResetCommand;
-import com.devesion.obd.command.protocol.SelectProtocolCommand;
-import com.devesion.obd.command.protocol.SetDefaultsCommand;
-import com.devesion.obd.command.protocol.SetEchoCommand;
-import com.devesion.obd.command.protocol.SetLineFeedCommand;
-import com.devesion.obd.command.protocol.SetSpacesCommand;
+import com.devesion.obd.command.at.ResetCommand;
+import com.devesion.obd.command.at.SelectProtocolCommand;
+import com.devesion.obd.command.at.SetDefaultsCommand;
+import com.devesion.obd.command.at.SetEchoCommand;
+import com.devesion.obd.command.at.SetLineFeedCommand;
+import com.devesion.obd.command.at.SetSpacesCommand;
 import com.devesion.obd.link.ObdLink;
 import com.devesion.obd.link.elm.ElmLink;
 import gnu.io.CommPortIdentifier;

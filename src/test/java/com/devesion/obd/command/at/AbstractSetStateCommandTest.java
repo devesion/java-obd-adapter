@@ -1,4 +1,4 @@
-package com.devesion.obd.command.protocol;
+package com.devesion.obd.command.at;
 
 import org.testng.annotations.Test;
 
@@ -6,7 +6,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 abstract class AbstractSetStateCommandTest {
 
-	private ProtocolCommand sut;
+	private AtCommand sut;
 
 	@Test
 	protected void constructorShouldSetStateOff() throws Exception {
@@ -36,5 +36,5 @@ abstract class AbstractSetStateCommandTest {
 
 	protected abstract String getOperandPrefix();
 
-	protected abstract ProtocolCommand createCommand(boolean state);
+	protected abstract AtCommand createCommand(boolean state);
 }
