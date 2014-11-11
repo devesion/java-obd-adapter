@@ -6,7 +6,7 @@ import lombok.ToString;
  * Skeletal implementation of {@link com.devesion.obd.command.ObdCommand} interface.
  */
 @ToString
-abstract class AbstractCommand implements ObdCommand {
+public abstract class AbstractCommand implements ObdCommand {
 
 	private CommandResult result;
 
