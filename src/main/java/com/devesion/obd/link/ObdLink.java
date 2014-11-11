@@ -4,7 +4,7 @@ import com.devesion.obd.command.CommandResult;
 import com.devesion.obd.command.ObdCommand;
 
 /**
- * Represents OBD IO link between two nodes (ie. bluetooth device and PC).
+ * Represents OBD link between two nodes (ie. bluetooth device and PC).
  */
 public interface ObdLink {
 

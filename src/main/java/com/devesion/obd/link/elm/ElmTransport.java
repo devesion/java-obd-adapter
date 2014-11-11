@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Represents ELM IO link between two nodes (ie. bluetooth device and PC).
+ * Represents ELM IO transport between two nodes (ie. bluetooth device and PC).
  */
 @Slf4j
 public class ElmTransport {
