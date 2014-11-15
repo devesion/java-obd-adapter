@@ -67,6 +67,20 @@
         </plugins>
     </reporting>
 
+    <distributionManagement>
+        <repository>
+            <id>devtools</id>
+            <name>devtools-releases</name>
+            <url>http://192.168.0.250:8081/artifactory/releases</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>devtools</id>
+            <name>devtools-snapshots</name>
+            <url>http://192.168.0.250:8081/artifactory/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencies>
         <!-- Lombok -->
         <dependency>
