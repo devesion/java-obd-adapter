@@ -32,6 +32,10 @@ public class UnitFactory {
 		return new RpmValue(commandResult);
 	}
 
+	public SensorCommandValue createSpeedValue(CommandResult commandResult) {
+		return new SpeedValue(commandResult);
+	}
+
 	public SensorCommandValue createTemperatureValue(CommandResult commandResult) {
 		return new TemperatureValue(commandResult);
 	}

@@ -50,6 +50,8 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <executable>/etc/alternatives/javac-7</executable>
+                    <fork>true</fork>
                 </configuration>
             </plugin>
             <plugin>
