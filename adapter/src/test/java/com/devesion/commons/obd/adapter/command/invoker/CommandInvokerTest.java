@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 
 import static org.mockito.MockitoAnnotations.initMocks;
 
+// TODO
 public class CommandInvokerTest {
 
 	@Mock
