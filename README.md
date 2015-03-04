@@ -1,12 +1,9 @@
 # java-obd-adapter
-java-obd-adapter
-java-obd-adapter
-OBD-II Java Adapter API
+java-obd-adapter - OBD-II Java Adapter API
 
 ### Requisites
-
-Java 7
-Maven 3
+* Java 7
+* Maven 3
 
 ### Supported Commands
 
