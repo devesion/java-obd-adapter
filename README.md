@@ -82,7 +82,6 @@ Diagnostic Commands
             log.info("invoking command {}", command);
             commandInvoker.invoke(command);
         } catch (Exception e) {
-            log.error("invoking fail - {}", e.getMessage());
             throw new DiagnosticStatusReadException(e);
         }
     }
