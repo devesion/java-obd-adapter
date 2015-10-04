@@ -20,7 +20,7 @@ public class CommandResult {
 	}
 
 	public static CommandResult empty() {
-		return withBuffer(IntBuffer.allocate(0));
+		return withBuffer(IntBuffer.allocate(10));
 	}
 
 	public static CommandResult withBuffer(IntBuffer responseBuffer) {

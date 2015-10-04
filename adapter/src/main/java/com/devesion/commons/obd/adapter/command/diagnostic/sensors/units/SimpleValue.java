@@ -1,7 +1,9 @@
 package com.devesion.commons.obd.adapter.command.diagnostic.sensors.units;
 
 import com.devesion.commons.obd.adapter.command.CommandResult;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 class SimpleValue extends AbstractSensorCommandValue {
 
 	private static final int DEFAULT_MULTIPLIER = 256;

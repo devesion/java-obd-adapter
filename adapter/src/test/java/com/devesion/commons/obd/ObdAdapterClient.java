@@ -11,10 +11,8 @@ import com.devesion.commons.obd.adapter.command.at.SetSpacesCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.EngineCoolantTemperatureCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.EngineLoadCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.EngineRpmCommand;
-import com.devesion.commons.obd.adapter.command.diagnostic.sensors.EngineRuntimeCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.IntakeAirTemperatureCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.MassAirFlowCommand;
-import com.devesion.commons.obd.adapter.command.diagnostic.sensors.ThrottlePositionCommand;
 import com.devesion.commons.obd.adapter.command.invoker.CommandInvoker;
 import com.devesion.commons.obd.adapter.link.ObdLink;
 import com.devesion.commons.obd.adapter.link.elm.ElmLink;
@@ -32,7 +30,7 @@ import java.util.Enumeration;
 public class ObdAdapterClient implements SerialPortEventListener {
 
 	private static final int TIME_OUT = 2000;
-	private static final int DATA_RATE = 9600;
+	private static final int DATA_RATE = 38400;
 	private InputStream is;
 	private OutputStream os;
 
@@ -47,9 +45,11 @@ public class ObdAdapterClient implements SerialPortEventListener {
 	}
 
 	private void prepareSerialPort() {
-		String wantedPortName = "/dev/pts/34";
+//		String wantedPortName = "/dev/pts/34";
+		String wantedPortName = "/dev/ttyUSB0";
 		System.setProperty("gnu.io.rxtx.SerialPorts", wantedPortName);
 		Enumeration portIdentifiers = CommPortIdentifier.getPortIdentifiers();
+
 		CommPortIdentifier portId = null;
 
 		while (portIdentifiers.hasMoreElements()) {
@@ -131,14 +131,14 @@ public class ObdAdapterClient implements SerialPortEventListener {
 		log.info("command - '{}'", massAirFlowCommand);
 		commandInvoker.invoke(massAirFlowCommand);
 		log.info("command response - '{}'\n", massAirFlowCommand.getValue());
-
-		ThrottlePositionCommand throttlePositionCommand = new ThrottlePositionCommand();
-		log.info("command - '{}'", throttlePositionCommand);
-		commandInvoker.invoke(throttlePositionCommand);
-		log.info("command response - '{}'\n", throttlePositionCommand.getValue().getFloatValue());
-
-		EngineRuntimeCommand engineRuntimeCommand = new EngineRuntimeCommand();
-		commandInvoker.invoke(engineRuntimeCommand);
+//
+//		ThrottlePositionCommand throttlePositionCommand = new ThrottlePositionCommand();
+//		log.info("command - '{}'", throttlePositionCommand);
+//		commandInvoker.invoke(throttlePositionCommand);
+//		log.info("command response - '{}'\n", throttlePositionCommand.getValue().getFloatValue());
+//
+//		EngineRuntimeCommand engineRuntimeCommand = new EngineRuntimeCommand();
+//		commandInvoker.invoke(engineRuntimeCommand);
 	}
 
 	@Override

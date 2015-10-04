@@ -62,7 +62,8 @@ public class ElmTransportTest {
 		catchException(sut).readData();
 
 		// then
-		assertThat(caughtException()).isExactlyInstanceOf(ObdCommunicationException.class);
+		Exception exception = caughtException();
+		assertThat(exception).isExactlyInstanceOf(ObdCommunicationException.class);
 	}
 
 	@Test
@@ -90,7 +91,8 @@ public class ElmTransportTest {
 		catchException(sut).sendData(expectedData);
 
 		// then
-		assertThat(caughtException()).isExactlyInstanceOf(ObdCommunicationException.class);
+		Exception exception = caughtException();
+		assertThat(exception).isExactlyInstanceOf(ObdCommunicationException.class);
 	}
 
 	@Test
@@ -104,7 +106,8 @@ public class ElmTransportTest {
 		catchException(sut).sendData(expectedData);
 
 		// then
-		assertThat(caughtException()).isExactlyInstanceOf(ObdCommunicationException.class);
+		Exception exception = caughtException();
+		assertThat(exception).isExactlyInstanceOf(ObdCommunicationException.class);
 	}
 
 	@Test

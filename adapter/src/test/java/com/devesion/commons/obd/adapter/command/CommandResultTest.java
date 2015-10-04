@@ -33,7 +33,7 @@ public class CommandResultTest {
 		IntBuffer responseBuffer = sut.getResponseBuffer();
 
 		// then
-		assertThat(responseBuffer.limit()).isEqualTo(0);
+		assertThat(responseBuffer.limit()).isEqualTo(10);
 	}
 
 	@Test

@@ -54,8 +54,8 @@
     </distributionManagement>
 
     <properties>
-        <java.version>1.7</java.version>
-        <project.dependency.lombok.version>0.12.0</project.dependency.lombok.version>
+        <java.version>1.8</java.version>
+        <project.dependency.lombok.version>1.16.2</project.dependency.lombok.version>
         <project.dependency.slf4j.log4j12.version>1.7.6</project.dependency.slf4j.log4j12.version>
         <project.dependency.google.guava.version>18.0</project.dependency.google.guava.version>
 
@@ -76,7 +76,6 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                    <executable>/etc/alternatives/javac-7</executable>
                     <fork>true</fork>
                 </configuration>
             </plugin>
@@ -210,5 +209,6 @@
 
     <modules>
         <module>adapter</module>
+        <module>client</module>
     </modules>
 </project>

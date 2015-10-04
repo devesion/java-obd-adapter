@@ -5,7 +5,7 @@ package com.devesion.commons.obd.adapter.command;
  */
 public abstract class AbstractCommand implements ObdCommand {
 
-	private CommandResult result;
+	private CommandResult result = CommandResult.empty();
 
 	public CommandResult getResult() {
 		return result;

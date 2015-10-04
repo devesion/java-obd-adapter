@@ -4,7 +4,7 @@ import com.devesion.commons.obd.adapter.command.diagnostic.DiagnosticCommandPid;
 import lombok.Getter;
 
 /**
- * Popular diagnostic command sensor's PIDs - OBD Mode 1.
+ * Popular com.autonalyzer.adapter.android.infrastture.diagnostic command sensor's PIDs - OBD Mode 1.
  */
 public enum SensorCommandPid implements DiagnosticCommandPid {
 	PIDS_SUPPORTED_SET_1(0x00),

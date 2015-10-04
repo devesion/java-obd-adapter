@@ -10,7 +10,7 @@ public class ObdInvalidCommandResponseException extends ObdCommandResponseExcept
 	private String responseData;
 
 	public ObdInvalidCommandResponseException(ObdCommand command, String responseData) {
-		super(command);
+		super(command, responseData);
 		this.responseData = responseData;
 	}
 

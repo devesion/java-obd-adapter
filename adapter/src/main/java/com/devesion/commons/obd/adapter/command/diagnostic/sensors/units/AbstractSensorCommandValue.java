@@ -3,11 +3,13 @@ package com.devesion.commons.obd.adapter.command.diagnostic.sensors.units;
 import com.devesion.commons.obd.adapter.command.CommandResult;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 abstract class AbstractSensorCommandValue implements SensorCommandValue {
 
 	@Getter(AccessLevel.PACKAGE)
-	private CommandResult commandResult;
+	private CommandResult commandResult = CommandResult.empty();
 
 	public AbstractSensorCommandValue(CommandResult commandResult) {
 		this.commandResult = commandResult;

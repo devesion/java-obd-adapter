@@ -7,7 +7,7 @@ public class SetBaudRateCommand extends AbstractAtCommand {
 
 	@Override
 	public String getOperands() {
-		return "PP 0C SV 45";
+		return "PP 0C SV 23";
 	}
 
 	@Override

@@ -10,4 +10,8 @@ public class ObdNoDataForCommandResponseException extends ObdCommandResponseExce
 	public ObdNoDataForCommandResponseException(ObdCommand command) {
 		super(command);
 	}
+
+	public ObdNoDataForCommandResponseException(ObdCommand command, String responseData) {
+		super(command, responseData);
+	}
 }

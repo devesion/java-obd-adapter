@@ -7,9 +7,7 @@ import com.devesion.commons.obd.adapter.shared.ObdNumberedEnum;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
-@ToString()
 abstract class AbstractSensorCommand extends AbstractDiagnosticCommand implements SensorCommand {
 
 	@Getter(AccessLevel.PACKAGE)
