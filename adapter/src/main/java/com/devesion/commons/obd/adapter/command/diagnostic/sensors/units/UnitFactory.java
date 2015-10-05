@@ -13,7 +13,7 @@ public class UnitFactory {
 	}
 
 	public SensorCommandValue createFuelLevelValue(CommandResult commandResult) {
-		return new FuelLevelValue(commandResult);
+		return new PercentageValue(commandResult);
 	}
 
 	public SensorCommandValue createFuelTypeValue(CommandResult commandResult) {
@@ -26,6 +26,10 @@ public class UnitFactory {
 
 	public SensorCommandValue createPressureValue(CommandResult commandResult) {
 		return new PressureValue(commandResult);
+	}
+
+	public SensorCommandValue createFuelPressureValue(CommandResult commandResult) {
+		return new FuelPressureValue(commandResult);
 	}
 
 	public SensorCommandValue createRpmValue(CommandResult commandResult) {

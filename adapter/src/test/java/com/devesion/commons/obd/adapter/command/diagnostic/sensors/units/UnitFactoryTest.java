@@ -51,7 +51,7 @@ public class UnitFactoryTest {
 		SensorCommandValue valueObject = sut.createFuelLevelValue(commandResultMock);
 
 		// then
-		assertValueObjectHasProperTypeAndResult(valueObject, FuelLevelValue.class);
+		assertValueObjectHasProperTypeAndResult(valueObject, PercentageValue.class);
 	}
 
 	@Test

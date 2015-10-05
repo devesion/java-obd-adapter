@@ -1,0 +1,20 @@
+package com.devesion.commons.obd.adapter.command.diagnostic.sensors;
+
+import com.devesion.commons.obd.adapter.command.diagnostic.sensors.units.SensorCommandValue;
+import com.devesion.commons.obd.adapter.shared.ObdNumberedEnum;
+
+/**
+ * Reads current fuel pressure in kPa.
+ */
+public class FuelPressureCommand extends AbstractSensorCommand {
+
+	@Override
+	public ObdNumberedEnum getPid() {
+		return SensorCommandPid.FUEL_PRESSURE;
+	}
+
+	@Override
+	public SensorCommandValue getValue() {
+		return getUnitFactory().createFuelPressureValue(getResult());
+	}
+}

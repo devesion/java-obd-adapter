@@ -11,11 +11,13 @@ import com.devesion.commons.obd.adapter.command.at.SetEchoCommand;
 import com.devesion.commons.obd.adapter.command.at.SetHeadersCommand;
 import com.devesion.commons.obd.adapter.command.at.SetLineFeedCommand;
 import com.devesion.commons.obd.adapter.command.at.SetSpacesCommand;
+import com.devesion.commons.obd.adapter.command.diagnostic.sensors.AmbientAirTemperatureCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.EngineCoolantTemperatureCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.EngineLoadCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.EngineRpmCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.EngineRuntimeCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.FuelLevelCommand;
+import com.devesion.commons.obd.adapter.command.diagnostic.sensors.FuelPressureCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.FuelTypeCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.IntakeAirTemperatureCommand;
 import com.devesion.commons.obd.adapter.command.diagnostic.sensors.MassAirFlowCommand;
@@ -49,13 +51,17 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class ElmDiagnosticStatusGateway implements DiagnosticStatusGateway {
 
-	private final DiagnosticTransport diagnosticTransport;
+	private static final int SLOW_STATUS_DURATION = 10;
+	private static final int VERY_SLOW_STATUS_DURATION = 60;
 
 	private boolean opened = false;
-
 	private boolean initialized = false;
 
 	private Instant lastSlowStatusTime = Instant.now();
+	private Instant lastVerySlowStatusTime = Instant.now();
+
+	private final DiagnosticStatus diagnosticStatus = new DiagnosticStatus();
+	private final DiagnosticTransport diagnosticTransport;
 
 	public ElmDiagnosticStatusGateway(DiagnosticTransport diagnosticTransport) {
 		this.diagnosticTransport = diagnosticTransport;
@@ -92,13 +98,12 @@ public class ElmDiagnosticStatusGateway implements DiagnosticStatusGateway {
 
 	@Override
 	public DiagnosticStatus readCurrentStatus() {
-		DiagnosticStatus diagnosticStatus = new DiagnosticStatus();
-
 		try {
 			open();
 			initialize();
 			readFastStatus(diagnosticStatus);
 			readSlowStatus(diagnosticStatus);
+			readVerySlowStatus(diagnosticStatus);
 		} catch (ObdNotProperlyInitializedException e) {
 			log.error("Reinitializing ELM due to {}", e.getMessage());
 			deinitialize();
@@ -122,15 +127,25 @@ public class ElmDiagnosticStatusGateway implements DiagnosticStatusGateway {
 	private void readSlowStatus(DiagnosticStatus diagnosticStatus) {
 		Instant now = Instant.now();
 		Duration duration = Duration.between(lastSlowStatusTime, now);
-		if (duration.getSeconds() > 10) {
-			diagnosticStatus.setFuelLevel(readFuelLevel());
-			diagnosticStatus.setFuelType(readFuelType());
+		if (duration.getSeconds() > SLOW_STATUS_DURATION) {
+			diagnosticStatus.setFuelPressure(readFuelPressure());
 			diagnosticStatus.setCoolantTemperature(readCoolantTemperature());
 			diagnosticStatus.setIntakeAirTemperature(readIntakeAirTemperature());
 			lastSlowStatusTime = Instant.now();
 		}
 	}
 
+	private void readVerySlowStatus(DiagnosticStatus diagnosticStatus) {
+		Instant now = Instant.now();
+		Duration duration = Duration.between(lastVerySlowStatusTime, now);
+		if (duration.getSeconds() > VERY_SLOW_STATUS_DURATION) {
+			diagnosticStatus.setFuelLevel(readFuelLevel());
+			diagnosticStatus.setFuelType(readFuelType());
+			diagnosticStatus.setRuntime(readEngineRuntime());
+			diagnosticStatus.setAmbientTemperature(readAmbientAirTemperature());
+			lastVerySlowStatusTime = Instant.now();
+		}
+	}
 	private int readEngineRpm() {
 		SensorCommand command = new EngineRpmCommand();
 		invokeCommand(command);
@@ -173,8 +188,20 @@ public class ElmDiagnosticStatusGateway implements DiagnosticStatusGateway {
 		return command.getValue().getIntValue();
 	}
 
+	private int readFuelPressure() {
+		SensorCommand command = new FuelPressureCommand();
+		invokeCommand(command);
+		return command.getValue().getIntValue();
+	}
+
 	private int readEngineRuntime() {
 		SensorCommand command = new EngineRuntimeCommand();
+		invokeCommand(command);
+		return command.getValue().getIntValue();
+	}
+
+	private int readAmbientAirTemperature() {
+		SensorCommand command = new AmbientAirTemperatureCommand();
 		invokeCommand(command);
 		return command.getValue().getIntValue();
 	}

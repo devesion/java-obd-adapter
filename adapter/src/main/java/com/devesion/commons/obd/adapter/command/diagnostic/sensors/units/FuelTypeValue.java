@@ -23,7 +23,7 @@ class FuelTypeValue extends AbstractSensorCommandValue {
 		return FuelType.valueOf(getIntValue());
 	}
 
-	public static enum FuelType {
+	public enum FuelType {
 		GASOLINE(0x01),
 		METHANOL(0x02),
 		ETHANOL(0x03),

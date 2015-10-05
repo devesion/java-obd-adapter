@@ -39,7 +39,15 @@ public class DiagnosticStatus {
 
 	@Setter
 	@Getter
+	private int fuelPressure;
+
+	@Setter
+	@Getter
 	private int fuelType;
+
+	@Setter
+	@Getter
+	private double ambientTemperature;
 
 	@Setter
 	@Getter
