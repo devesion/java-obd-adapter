@@ -97,3 +97,7 @@ Diagnostic Commands
         return new CommandInvoker(obdLink);
     }
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/devesion/java-obd-adapter/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
